@@ -18,6 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Braincrafted\BootstrapDemoBundle\Form\Type\BasicFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\ControlStatesFormType;
+use Braincrafted\BootstrapDemoBundle\Form\Type\ExtendingControlsFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\HorizontalFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\InlineFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\SearchFormType;
@@ -49,20 +50,24 @@ class BootstrapController extends Controller
 
     public function baseCssAction()
     {
-        $basicForm         = $this->createForm(new BasicFormType());
-        $controlStatesForm = $this->createForm(new ControlStatesFormType());
-        $horizontalForm    = $this->createForm(new HorizontalFormType());
-        $inlineForm        = $this->createForm(new InlineFormType());
-        $searchForm        = $this->createForm(new SearchFormType());
+        $basicForm             = $this->createForm(new BasicFormType());
+        $controlStatesForm     = $this->createForm(new ControlStatesFormType());
+        $extendingControlsForm = $this->createForm(
+            new ExtendingControlsFormType()
+        );
+        $horizontalForm        = $this->createForm(new HorizontalFormType());
+        $inlineForm            = $this->createForm(new InlineFormType());
+        $searchForm            = $this->createForm(new SearchFormType());
 
         return $this->render(
             'BraincraftedBootstrapDemoBundle:Bootstrap:baseCss.html.twig',
             array(
-                'basicForm'         => $basicForm->createView(),
-                'controlStatesForm' => $controlStatesForm->createView(),
-                'horizontalForm'    => $horizontalForm->createView(),
-                'inlineForm'        => $inlineForm->createView(),
-                'searchForm'        => $searchForm->createView()
+                'basicForm'             => $basicForm->createView(),
+                'controlStatesForm'     => $controlStatesForm->createView(),
+                'extendingControlsForm' => $extendingControlsForm->createView(),
+                'horizontalForm'        => $horizontalForm->createView(),
+                'inlineForm'            => $inlineForm->createView(),
+                'searchForm'            => $searchForm->createView()
             )
         );
     }
