@@ -1,0 +1,23 @@
+BraincraftedBootstrapDemoBundle_overview:
+    pattern:  /bootstrap
+    defaults: { _controller: BraincraftedBootstrapDemoBundle:Bootstrap:overview }
+
+BraincraftedBootstrapDemoBundle_scaffolding:
+    pattern:  /bootstrap/scaffolding
+    defaults: { _controller: BraincraftedBootstrapDemoBundle:Bootstrap:scaffolding }
+
+BraincraftedBootstrapDemoBundle_baseCss:
+    pattern:  /bootstrap/base-css
+    defaults: { _controller: BraincraftedBootstrapDemoBundle:Bootstrap:baseCss }
+
+BraincraftedBootstrapDemoBundle_components:
+    pattern:  /bootstrap/components
+    defaults: { _controller: BraincraftedBootstrapDemoBundle:Bootstrap:components }
+
+BraincraftedBootstrapDemoBundle_javascript:
+    pattern:  /bootstrap/javascript
+    defaults: { _controller: BraincraftedBootstrapDemoBundle:Bootstrap:javascript }
+
+BraincraftedBootstrapDemoBundle_less:
+    pattern:  /bootstrap/less
+    defaults: { _controller: BraincraftedBootstrapDemoBundle:Bootstrap:less }
