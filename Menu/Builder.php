@@ -61,4 +61,26 @@ class Builder extends ContainerAware
 
         return $menu;
     }
+
+    public function stackedTabs(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+
+        $menu->addChild('Home', array('route' => 'BraincraftedBootstrapDemoBundle_components'));
+        $menu->addChild('Profile', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $menu->addChild('Messages', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+
+        return $menu;
+    }
+
+    public function stackedPills(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+
+        $menu->addChild('Home', array('route' => 'BraincraftedBootstrapDemoBundle_components'));
+        $menu->addChild('Profile', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $menu->addChild('Messages', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+
+        return $menu;
+    }
 }

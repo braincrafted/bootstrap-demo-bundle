@@ -502,28 +502,16 @@
     </div>
     <div class="span4">
       <h3>Stacked tabs</h3>
-      <ul class="nav nav-tabs nav-stacked">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
-      </ul>
+      {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:stackedTabs', { 'nav_type': 'stacked-tabs' }) }}
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-tabs nav-stacked"&gt;
-  ...
-&lt;/ul&gt;
+{{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:stackedTabs', { 'nav_type': 'stacked-tabs' }) }}" }}
 </pre>
     </div>
     <div class="span4">
       <h3>Stacked pills</h3>
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
-      </ul>
+      {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:stackedPills', { 'nav_type': 'stacked-pills' }) }}
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills nav-stacked"&gt;
-  ...
-&lt;/ul&gt;
+{{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:stackedPills', { 'nav_type': 'stacked-pills' }) }}" }}
 </pre>
     </div>
   </div>
