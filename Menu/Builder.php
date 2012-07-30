@@ -83,4 +83,37 @@ class Builder extends ContainerAware
 
         return $menu;
     }
+
+    public function tabsDropdown(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+
+        $menu->addChild('Home', array('route' => 'BraincraftedBootstrapDemoBundle_components'));
+        $menu->addChild('Help', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $dropdown = $menu->addChild('Dropdown');
+        $dropdown->addChild('Action', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $dropdown->addChild('Another action', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $dropdown->addChild('Something else here', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $dropdown->addChild('-DIVIDER-');
+        $dropdown->addChild('Separated link', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+
+        return $menu;
+    }
+
+    public function pillsDropdown(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+
+        $menu->addChild('Home', array('route' => 'BraincraftedBootstrapDemoBundle_components'));
+        $menu->addChild('Help', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $dropdown = $menu->addChild('Dropdown');
+        $dropdown->addChild('Action', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $dropdown->addChild('Another action', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $dropdown->addChild('Something else here', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $dropdown->addChild('-DIVIDER-');
+        $dropdown->addChild('Separated link', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+
+        return $menu;
+    }
+
 }
