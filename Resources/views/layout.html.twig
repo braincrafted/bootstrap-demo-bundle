@@ -29,17 +29,7 @@
             </button>
             <a class="brand" href="{{ path('BraincraftedBootstrapDemoBundle_overview') }}">Bootstrap</a>
             <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <li class="active"><a href="{{ path('BraincraftedBootstrapDemoBundle_overview') }}">Overview</a></li>
-                    <li class=""><a href="{{ path('BraincraftedBootstrapDemoBundle_scaffolding') }}">Scaffolding</a></li>
-                    <li class=""><a href="{{ path('BraincraftedBootstrapDemoBundle_baseCss') }}">Base CSS</a></li>
-                    <li class=""><a href="{{ path('BraincraftedBootstrapDemoBundle_components') }}">Components</a></li>
-                    <li class=""><a href="{{ path('BraincraftedBootstrapDemoBundle_javascript') }}">Javascript plugins</a></li>
-                    <li class=""><a href="{{ path('BraincraftedBootstrapDemoBundle_less') }}">Using LESS</a></li>
-                    <li class="divider-vertical"></li>
-                    <li class=""><a href="./download.html">Customize</a></li>
-                    <li class=""><a href="./examples.html">Examples</a></li>
-                </ul>
+                {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:navBar', { 'nav_type': 'navbar' }) }}
             </div>
         </div>
     </div>

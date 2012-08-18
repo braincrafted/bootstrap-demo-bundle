@@ -6,6 +6,22 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 
 class Builder extends ContainerAware
 {
+    public function navBar(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+
+        $menu->addChild('Overview', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $menu->addChild('Scaffolding', array('route' => 'BraincraftedBootstrapDemoBundle_scaffolding'));
+        $menu->addChild('Base CSS', array('route' => 'BraincraftedBootstrapDemoBundle_baseCss'));
+        $menu->addChild('Components', array('route' => 'BraincraftedBootstrapDemoBundle_components'));
+        $menu->addChild('Javascript plugins', array('route' => 'BraincraftedBootstrapDemoBundle_javascript'));
+        $menu->addChild('Using LESS', array('route' => 'BraincraftedBootstrapDemoBundle_less'));
+        $menu->addChild('-DIVIDER-');
+        $menu->addChild('Customize', array('uri' => '#'));
+        $menu->addChild('Examples', array('uri' => '#'));
+
+        return $menu;
+    }
     public function navList(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
