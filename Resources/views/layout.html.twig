@@ -4,50 +4,68 @@
 <head>
 
 <meta charset="utf-8">
-<title>Twitter Bootstrap</title>
+<title>{% block title %}Twitter Bootstrap{% endblock %}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
 
 {% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}
 <link rel="stylesheet" href="/bundles/braincraftedbootstrapdemo/css/docs.css">
+<link rel="stylesheet" href="/bundles/braincraftedbootstrapdemo/css/bc-docs.css">
 <link rel="stylesheet" href="/bundles/braincraftedbootstrapdemo/css/google-code-prettify.css">
 
 {% include 'BraincraftedBootstrapBundle::_html5shiv.html.twig' %}
 
 </head>
 
-<body data-spy="scroll" data-target=".subnav" data-offset="50">
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
 
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
         <div class="container">
-            <button type="button"class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="{{ path('BraincraftedBootstrapDemoBundle_overview') }}">Bootstrap</a>
-            <div class="nav-collapse collapse">
-                {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:navBar', { 'nav_type': 'navbar' }) }}
-            </div>
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">Bootstrap</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="{{ path('BraincraftedBootstrapDemoBundle_index') }}">Home</a></li>
+              <li><a href="{{ path('BraincraftedBootstrapDemoBundle_gettingStarted') }}">Get started</a></li>
+              <li><a href="{{ path('BraincraftedBootstrapDemoBundle_scaffolding') }}">Scaffolding</a></li>
+              <li><a href="{{ path('BraincraftedBootstrapDemoBundle_baseCss') }}">Base CSS</a></li>
+              <li><a href="{{ path('BraincraftedBootstrapDemoBundle_components') }}">Components</a></li>
+              <li><a href="{{ path('BraincraftedBootstrapDemoBundle_javascript') }}">Javascript</a></li>
+              <li><a href="{{ path('BraincraftedBootstrapDemoBundle_customize') }}">Customize</a></li>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
 {% block body %}{% endblock %}
 
-<div class="container">
+    <!-- Footer
+    ================================================== -->
     <footer class="footer">
+      <div class="container">
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
         <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
         <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <ul class="footer-links">
+          <li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
+        </ul>
+      </div>
     </footer>
-</div>
 
 {% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}
-<script src="/bundles/braincraftedbootstrapdemo/js/docs.js"></script>
+<script src="{{ asset('/bundles/braincraftedbootstrapdemo/js/application.js') }}"></script>
 <script src="/bundles/braincraftedbootstrapdemo/js/google-code-prettify.js"></script>
 
 </body>

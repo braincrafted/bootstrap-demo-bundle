@@ -16,7 +16,7 @@ namespace Braincrafted\BootstrapDemoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Braincrafted\BootstrapDemoBundle\Form\Type\BasicFormType;
+use Braincrafted\BootstrapDemoBundle\Form\Type\DefaultStylesFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\ControlStatesFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\ExtendingControlsFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\HorizontalFormType;
@@ -34,10 +34,17 @@ use Braincrafted\BootstrapDemoBundle\Form\Type\SearchFormType;
  */
 class BootstrapController extends Controller
 {
-    public function overviewAction()
+    public function indexAction()
     {
         return $this->render(
-            'BraincraftedBootstrapDemoBundle:Bootstrap:overview.html.twig'
+            'BraincraftedBootstrapDemoBundle:Bootstrap:index.html.twig'
+        );
+    }
+
+    public function gettingStartedAction()
+    {
+        return $this->render(
+            'BraincraftedBootstrapDemoBundle:Bootstrap:gettingStarted.html.twig'
         );
     }
 
@@ -50,7 +57,7 @@ class BootstrapController extends Controller
 
     public function baseCssAction()
     {
-        $basicForm             = $this->createForm(new BasicFormType());
+        $defaultStylesForm     = $this->createForm(new DefaultStylesFormType());
         $controlStatesForm     = $this->createForm(new ControlStatesFormType());
         $extendingControlsForm = $this->createForm(
             new ExtendingControlsFormType()
@@ -62,7 +69,7 @@ class BootstrapController extends Controller
         return $this->render(
             'BraincraftedBootstrapDemoBundle:Bootstrap:baseCss.html.twig',
             array(
-                'basicForm'             => $basicForm->createView(),
+                'defaultStylesForm'     => $defaultStylesForm->createView(),
                 'controlStatesForm'     => $controlStatesForm->createView(),
                 'extendingControlsForm' => $extendingControlsForm->createView(),
                 'horizontalForm'        => $horizontalForm->createView(),
@@ -86,10 +93,10 @@ class BootstrapController extends Controller
         );
     }
 
-    public function lessAction()
+    public function customizeAction()
     {
         return $this->render(
-            'BraincraftedBootstrapDemoBundle:Bootstrap:less.html.twig'
+            'BraincraftedBootstrapDemoBundle:Bootstrap:customize.html.twig'
         );
     }
 }
