@@ -863,15 +863,40 @@ class DefaultStylesFormType extends AbstractType
           <h3>Search form</h3>
           <p>Add <code>.form-search</code> to the form and <code>.search-query</code> to the <code>&lt;input&gt;</code> for an extra-rounded text input.</p>
           <form class="bs-docs-example form-search">
-            <input type="text" class="input-medium search-query">
+            {{ form_widget(searchForm, { 'form_type': 'search' }) }}
             <button type="submit" class="btn">Search</button>
           </form>
 <pre class="prettyprint linenums">
-&lt;form class="form-search"&gt;
-  &lt;input type="text" class="input-medium search-query"&gt;
+&lt;form class="bs-docs-example form-search"&gt;
+  {{ "{{ form_widget(searchForm, { 'form_type': 'search' }) }}" }}
   &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
 &lt;/form&gt;
 </pre>
+<pre class="prettyprint linenums">
+// src/Braincrafted/BootstrapDemoBundle/Form/Type/SearchFormType.php
+namespace Braincrafted\BootstrapDemoBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+
+class SearchFormType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder->add('searchQuery', 'search', array(
+            'required'  => false,
+            'attr'      => array('class'=> 'input-medium')
+        ));
+    }
+
+    public function getName()
+    {
+        return 'search_form';
+    }
+}
+
+</pre>
+
 
           <h3>Inline form</h3>
           <p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
