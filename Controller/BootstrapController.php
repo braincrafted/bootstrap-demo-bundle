@@ -18,6 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Braincrafted\BootstrapDemoBundle\Form\Type\DefaultStylesFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\ControlStatesFormType;
+use Braincrafted\BootstrapDemoBundle\Form\Type\SupportedFormControlsType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\ExtendingControlsFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\HorizontalFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\InlineFormType;
@@ -59,6 +60,7 @@ class BootstrapController extends Controller
     {
         $defaultStylesForm     = $this->createForm(new DefaultStylesFormType());
         $controlStatesForm     = $this->createForm(new ControlStatesFormType());
+        $supportedFormControls = $this->createForm(new SupportedFormControlsType());
         $extendingControlsForm = $this->createForm(
             new ExtendingControlsFormType()
         );
@@ -71,6 +73,7 @@ class BootstrapController extends Controller
             array(
                 'defaultStylesForm'     => $defaultStylesForm->createView(),
                 'controlStatesForm'     => $controlStatesForm->createView(),
+                'supportedFormControls' => $supportedFormControls->createView(),
                 'extendingControlsForm' => $extendingControlsForm->createView(),
                 'horizontalForm'        => $horizontalForm->createView(),
                 'inlineForm'            => $inlineForm->createView(),
