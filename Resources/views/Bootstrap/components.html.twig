@@ -714,7 +714,7 @@ public function tabsDropdown(FactoryInterface $factory, array $options)
         $dropdown->addChild('Action', array('uri' => '#'));
         $dropdown->addChild('Another action', array('uri' => '#'));
         $dropdown->addChild('Something else here', array('uri' => '#'));
-        $dropdown->addChild('-DIVIDER-');
+        $dropdown->addChild('d1', array('attributes' => array('divider' => true)));
         $dropdown->addChild('Separated link', array('uri' => '#'));
 
     return $menu;
@@ -765,10 +765,10 @@ public function navList(FactoryInterface $factory, array $options)
 </pre>
 
           <h3>Horizontal dividers</h3>
-          <p>Add a horizontal divider by creating an empty list item with the label <code>-DIVIDER-</code>, like so:</p>
+          <p>Add a horizontal divider by creating a list item with the attribute <code>divider</code>, like so:</p>
 <pre class="prettyprint linenums">
 ...
-$item = $menu->addChild('-DIVIDER-');
+$dropdown->addChild('d1', array('attributes' => array('divider' => true)));
 ...
 </pre>
 
@@ -943,10 +943,7 @@ $item = $menu->addChild('-DIVIDER-');
             <div class="navbar">
               <div class="navbar-inner">
                 <a class="brand" href="#">Title</a>
-                <ul class="nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
+                {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:basicNavbar', {'nav_type': 'navbar'}) }}
                 </ul>
               </div>
             </div>
@@ -955,13 +952,25 @@ $item = $menu->addChild('-DIVIDER-');
 &lt;div class="navbar"&gt;
   &lt;div class="navbar-inner"&gt;
     &lt;a class="brand" href="#"&gt;Title&lt;/a&gt;
-    &lt;ul class="nav"&gt;
-      &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
+    {{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:basicNavbar', {'nav_type': 'navbar'}) }}" }}
   &lt;/div&gt;
 &lt;/div&gt;
+</pre>
+<pre class="prettyprint linenums">
+// src/Braincrafted/BootstrapDemoBundle/Menu/Builder.php
+...
+public function basicNavbar(FactoryInterface $factory, array $options)
+{
+    $menu = $factory->createItem('root');
+
+    $item = $menu->addChild('Home', array('uri' => '#'));
+    $item->setCurrent(true);
+    $item = $menu->addChild('Link 1', array('uri' => '#'));
+    $item = $menu->addChild('Link 2', array('uri' => '#'));
+
+    return $menu;
+}
+...
 </pre>
 
 
@@ -988,44 +997,31 @@ $item = $menu->addChild('-DIVIDER-');
           <div class="bs-docs-example">
             <div class="navbar">
               <div class="navbar-inner">
-                <ul class="nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-                </ul>
+                {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:basicNavbar', {'nav_type': 'navbar'}) }}
               </div>
             </div>
           </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#">Home&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+{{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:basicNavbar', {'nav_type': 'navbar'}) }}" }}
 </pre>
           <p>You can easily add dividers to your nav links with an empty list item and a simple class. Just add this between links:</p>
           <div class="bs-docs-example">
             <div class="navbar">
               <div class="navbar-inner">
-                <ul class="nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li class="divider-vertical"></li>
-                  <li><a href="#">Link</a></li>
-                  <li class="divider-vertical"></li>
-                  <li><a href="#">Link</a></li>
-                  <li class="divider-vertical"></li>
-                </ul>
+                {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:dividerNavbar', {'nav_type': 'navbar'}) }}
               </div>
             </div>
           </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav"&gt;
+// src/Braincrafted/BootstrapDemoBundle/Menu/Builder.php
+...
+public function dividerNavbar(FactoryInterface $factory, array $options)
+{
   ...
-  &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+  $item = $menu->addChild('d1', array('attributes' => array('divider' => true)));
   ...
-&lt;/ul&gt;
+}
+...
 </pre>
 
           <h3>Forms</h3>
@@ -1065,22 +1061,25 @@ $item = $menu->addChild('-DIVIDER-');
 </pre>
 
           <h3>Component alignment</h3>
-          <p>Align nav links, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
+          <p>Align search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction. Use the <code>pull</code> option to float nav links left or right.</p>
+<pre class="prettyprint linenums">
+{{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:basicNavbar', {'nav_type': 'navbar', 'pull': 'left'}) }}" }}
+{{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:basicNavbar', {'nav_type': 'navbar', 'pull': 'right'}) }}" }}
+</pre>
 
           <h3>Using dropdowns</h3>
-          <p>Add dropdowns and dropups to the nav with a bit of markup and the <a href="./javascript.html#dropdowns">dropdowns javascript plugin</a>.</p>
+          <p>Add dropdowns and dropups to the nav by nesting the menus. The <a href="./javascript.html#dropdowns">dropdowns javascript plugin</a> is required.</p>
 <pre class="prettyprint linenums">
-&lt;ul class="nav"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown">
-      Account
-      &lt;b class="caret"&gt;&lt;/b&gt;
-    &lt;/a&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      ...
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+// src/Braincrafted/BootstrapDemoBundle/Menu/Builder.php
+...
+public function dropdownNavbar(FactoryInterface $factory, array $options)
+{
+    ...
+    $dropdown = $menu->addChild('Dropdown');
+    $dropdown->addChild('Action', array('uri' => '#'));
+    ...
+}
+...
 </pre>
           <p>Visit the <a href="./javascript.html#dropdowns">javascript dropdowns documentation</a> for more markup and information on calling dropdowns.</p>
 
@@ -1177,40 +1176,11 @@ $item = $menu->addChild('-DIVIDER-');
                   </a>
                   <a class="brand" href="#">Title</a>
                   <div class="nav-collapse">
-                    <ul class="nav">
-                      <li class="active"><a href="#">Home</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
-                          <li class="divider"></li>
-                          <li class="nav-header">Nav header</li>
-                          <li><a href="#">Separated link</a></li>
-                          <li><a href="#">One more separated link</a></li>
-                        </ul>
-                      </li>
-                    </ul>
+                    {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:responsiveNavbar', {'nav_type': 'navbar'}) }}
                     <form class="navbar-search pull-left" action="">
                       <input type="text" class="search-query span2" placeholder="Search">
                     </form>
-                    <ul class="nav pull-right">
-                      <li><a href="#">Link</a></li>
-                      <li class="divider-vertical"></li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">Separated link</a></li>
-                        </ul>
-                      </li>
-                    </ul>
+                    {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:responsiveNavbarRight', {'nav_type': 'navbar', 'pull': 'right'}) }}
                   </div><!-- /.nav-collapse -->
                 </div>
               </div><!-- /navbar-inner -->
@@ -1233,7 +1203,11 @@ $item = $menu->addChild('-DIVIDER-');
 
       &lt;!-- Everything you want hidden at 940px or less, place within here --&gt;
       &lt;div class="nav-collapse"&gt;
-        &lt;!-- .nav, .navbar-search, .navbar-form, etc --&gt;
+        {{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:responsiveNavbar', {'nav_type': 'navbar'}) }}" }}
+        &lt;form class="navbar-search pull-left" action=""&gt;
+          &lt;input type="text" class="search-query span2" placeholder="Search"&gt;
+        &lt;/form&gt;
+        {{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:responsiveNavbarRight', {'nav_type': 'navbar', 'pull': 'right'}) }}" }}
       &lt;/div&gt;
 
     &lt;/div&gt;
