@@ -22,19 +22,20 @@ class Builder extends ContainerAware
 
         return $menu;
     }
+
     public function navList(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
 
-        $menu->addChild('List Header');
-        $menu->addChild('Home', array('route' => 'BraincraftedBootstrapDemoBundle_components'));
-        $menu->addChild('Library', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-        $menu->addChild('Applications', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-        $menu->addChild('Another List Header');
-        $menu->addChild('Profile', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-        $menu->addChild('Settings', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-        $menu->addChild('-DIVIDER-');
-        $menu->addChild('Help', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $item = $menu->addChild('List Header');
+        $item->addChild('Home', array('uri' => '#'));
+        $item->addChild('Library', array('uri' => '#'));
+        $item->addChild('Applications', array('uri' => '#'));
+        $item = $menu->addChild('Another List Header');
+        $item->addChild('Profile', array('uri' => '#'));
+        $item->addChild('Settings', array('uri' => '#'));
+        $item = $menu->addChild('-DIVIDER-');
+        $item = $menu->addChild('Help', array('uri' => '#'));
 
         return $menu;
     }
