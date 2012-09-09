@@ -863,11 +863,11 @@ class DefaultStylesFormType extends AbstractType
           <h3>Search form</h3>
           <p>Add <code>.form-search</code> to the form and <code>.search-query</code> to the <code>&lt;input&gt;</code> for an extra-rounded text input.</p>
           <form class="bs-docs-example form-search">
-            {{ form_widget(searchForm, { 'form_type': 'search' }) }}
+            {{ form_widget(searchForm, {'form_type': 'search'}) }}
             <button type="submit" class="btn">Search</button>
           </form>
 <pre class="prettyprint linenums">
-&lt;form class="bs-docs-example form-search"&gt;
+&lt;form class="form-search"&gt;
   {{ "{{ form_widget(searchForm, { 'form_type': 'search' }) }}" }}
   &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
 &lt;/form&gt;
@@ -901,23 +901,53 @@ class SearchFormType extends AbstractType
           <h3>Inline form</h3>
           <p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
           <form class="bs-docs-example form-inline">
-            <input type="text" class="input-small" placeholder="Email">
-            <input type="password" class="input-small" placeholder="Password">
-            <label class="checkbox">
-              <input type="checkbox"> Remember me
-            </label>
+            {{ form_widget(inlineForm, {'form_type': 'inline'}) }}
             <button type="submit" class="btn">Sign in</button>
           </form>
 <pre class="prettyprint linenums">
-&lt;form class="form-inline"&gt;
-  &lt;input type="text" class="input-small" placeholder="Email"&gt;
-  &lt;input type="password" class="input-small" placeholder="Password"&gt;
-  &lt;label class="checkbox"&gt;
-    &lt;input type="checkbox"&gt; Remember me
-  &lt;/label&gt;
+&lt;form class="bs-docs-example form-inline"&gt;
+  {{ "{{ form_widget(inlineForm, {'form_type': 'inline'}) }}" }}
   &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
 &lt;/form&gt;
 </pre>
+<pre class="prettyprint linenums">
+// src/Braincrafted/BootstrapDemoBundle/Form/Type/InlineFormType.php
+namespace Braincrafted\BootstrapDemoBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+
+class InlineFormType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder->add('email', 'email', array(
+            'required'      => false,
+            'attr'  => array(
+                'placeholder'   => 'Email',
+                'class'         => 'input-small'
+            )
+        ));
+        $builder->add('password', 'password', array(
+            'required'  => false,
+            'attr'      => array(
+                'placeholder'   => 'Password',
+                'class'         => 'input-small'
+            )
+        ));
+        $builder->add('rememberMe', 'checkbox', array(
+            'label'     => 'Remember me'
+        ));
+    }
+
+    public function getName()
+    {
+        return 'inline_form';
+    }
+}
+
+</pre>
+
 
           <h3>Horizontal form</h3>
           <p>Right align labels and float them to the left to make them appear on the same line as controls. Requires the most markup changes from a default form:</p>

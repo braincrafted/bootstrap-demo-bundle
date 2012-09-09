@@ -30,6 +30,6 @@ class InlineFormType extends AbstractType
 
     public function getName()
     {
-        return 'inlineForm';
+        return 'inline_form';
     }
 }
