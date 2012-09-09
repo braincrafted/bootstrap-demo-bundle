@@ -566,60 +566,100 @@
           <h3>Basic tabs</h3>
           <p>Take a regular <code>&lt;ul&gt;</code> of links and add <code>.nav-tabs</code>:</p>
           <div class="bs-docs-example">
-            <ul class="nav nav-tabs">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Messages</a></li>
-            </ul>
+            {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:basicTabs', {'nav_type': 'tabs'}) }}
           </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-tabs"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#"&gt;Home&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+{{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:basicTabs', {'nav_type': 'tabs'}) }}" }}
+</pre>
+<pre class="prettyprint linenums">
+// src/Braincrafted/BootstrapDemoBundle/Menu/Builder.php
+...
+public function basicTabs(FactoryInterface $factory, array $options)
+{
+    $menu = $factory->createItem('root');
+
+    $item = $menu->addChild('Home', array('uri' => '#'));
+    $item->setCurrent(true);
+    $item = $menu->addChild('Profile', array('uri' => '#'));
+    $item = $menu->addChild('Messages', array('uri' => '#'));
+
+    return $menu;
+}
+...
 </pre>
 
           <h3>Basic pills</h3>
           <p>Take that same HTML, but use <code>.nav-pills</code> instead:</p>
           <div class="bs-docs-example">
-            <ul class="nav nav-pills">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Messages</a></li>
-            </ul>
-          </div>
+            {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:basicTabs', {'nav_type': 'pills'}) }}
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#"&gt;Home&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+{{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:basicTabs', {'nav_type': 'pills'}) }}" }}
+</pre>
+<pre class="prettyprint linenums">
+// src/Braincrafted/BootstrapDemoBundle/Menu/Builder.php
+...
+public function basicPills(FactoryInterface $factory, array $options)
+{
+    $menu = $factory->createItem('root');
+
+    $item = $menu->addChild('Home', array('uri' => '#'));
+    $item->setCurrent(true);
+    $item = $menu->addChild('Profile', array('uri' => '#'));
+    $item = $menu->addChild('Messages', array('uri' => '#'));
+
+    return $menu;
+}
+...
 </pre>
 
           <h3>Disabled state</h3>
           <p>For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>. Links will remain clickable, however, unless custom javascript is implemented to prevent those clicks.</p>
           <div class="bs-docs-example">
-            <ul class="nav nav-pills">
-              <li><a href="#">Clickable link</a></li>
-              <li><a href="#">Clickable link</a></li>
-              <li class="disabled"><a href="#">Disabled link</a></li>
-            </ul>
+            {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:disabledState', {'nav_type': 'pills'}) }}
           </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills"&gt;
-  ...
-  &lt;li class="disabled"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  ...
-&lt;/ul&gt;
+// src/Braincrafted/BootstrapDemoBundle/Menu/Builder.php
+...
+public function disabledState(FactoryInterface $factory, array $options)
+{
+    $menu = $factory->createItem('root');
+
+    $item = $menu->addChild('Clickable link 1', array('uri' => '#'));
+    $item = $menu->addChild('Clickable link 2', array('uri' => '#'));
+    $item = $menu->addChild('Disabled link', array(
+        'uri'           => '#',
+        'attributes'    => array('class' => 'disabled')
+    ));
+
+    return $menu;
+}
+...
 </pre>
 
           <h3>Component alignment</h3>
           <p>To align nav links, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
+
+          <div class="bs-docs-example">
+            {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:pullRight', {'nav_type': 'pills'}) }}
+          </div>
+<pre class="prettyprint linenums">
+// src/Braincrafted/BootstrapDemoBundle/Menu/Builder.php
+...
+public function pullRight(FactoryInterface $factory, array $options)
+{
+    $menu = $factory->createItem('root');
+
+    $item = $menu->addChild('Link 1', array('uri' => '#'));
+    $item = $menu->addChild('Link 2', array('uri' => '#'));
+    $item = $menu->addChild('Link 3', array(
+        'uri'           => '#',
+        'attributes'    => array('class' => 'pull-right')
+    ));
+
+    return $menu;
+}
+...
+</pre>
 
 
           <hr class="bs-docs-separator">
@@ -630,30 +670,18 @@
 
           <h3>Stacked tabs</h3>
           <div class="bs-docs-example">
-            <ul class="nav nav-tabs nav-stacked">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Messages</a></li>
-            </ul>
+            {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:stackedTabs', {'nav_type': 'stacked_tabs'}) }}
           </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-tabs nav-stacked"&gt;
-  ...
-&lt;/ul&gt;
+{{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:stackedTabs', {'nav_type': 'stacked_tabs'}) }}" }}
 </pre>
 
           <h3>Stacked pills</h3>
           <div class="bs-docs-example">
-            <ul class="nav nav-pills nav-stacked">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Messages</a></li>
-            </ul>
+            {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:stackedTabs', {'nav_type': 'stacked_pills'}) }}
           </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills nav-stacked"&gt;
-  ...
-&lt;/ul&gt;
+{{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:stackedTabs', {'nav_type': 'stacked_pills'}) }}" }}
 </pre>
 
 

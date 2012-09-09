@@ -60,9 +60,10 @@ class Builder extends ContainerAware
     {
         $menu = $factory->createItem('root');
 
-        $menu->addChild('Home', array('route' => 'BraincraftedBootstrapDemoBundle_components'));
-        $menu->addChild('Profile', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-        $menu->addChild('Messages', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $item = $menu->addChild('Home', array('uri' => '#'));
+        $item->setCurrent(true);
+        $item = $menu->addChild('Profile', array('uri' => '#'));
+        $item = $menu->addChild('Messages', array('uri' => '#'));
 
         return $menu;
     }
@@ -71,9 +72,38 @@ class Builder extends ContainerAware
     {
         $menu = $factory->createItem('root');
 
-        $menu->addChild('Home', array('route' => 'BraincraftedBootstrapDemoBundle_components'));
-        $menu->addChild('Profile', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-        $menu->addChild('Messages', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $item = $menu->addChild('Home', array('uri' => '#'));
+        $item->setCurrent(true);
+        $item = $menu->addChild('Profile', array('uri' => '#'));
+        $item = $menu->addChild('Messages', array('uri' => '#'));
+
+        return $menu;
+    }
+
+    public function disabledState(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+
+        $item = $menu->addChild('Clickable link 1', array('uri' => '#'));
+        $item = $menu->addChild('Clickable link 2', array('uri' => '#'));
+        $item = $menu->addChild('Disabled link', array(
+            'uri'           => '#',
+            'attributes'    => array('class' => 'disabled')
+        ));
+
+        return $menu;
+    }
+
+    public function pullRight(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+
+        $item = $menu->addChild('Link 1', array('uri' => '#'));
+        $item = $menu->addChild('Link 2', array('uri' => '#'));
+        $item = $menu->addChild('Link 3', array(
+            'uri'           => '#',
+            'attributes'    => array('class' => 'pull-right')
+        ));
 
         return $menu;
     }
@@ -82,9 +112,10 @@ class Builder extends ContainerAware
     {
         $menu = $factory->createItem('root');
 
-        $menu->addChild('Home', array('route' => 'BraincraftedBootstrapDemoBundle_components'));
-        $menu->addChild('Profile', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-        $menu->addChild('Messages', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $item = $menu->addChild('Home', array('uri' => '#'));
+        $item->setCurrent(true);
+        $item = $menu->addChild('Profile', array('uri' => '#'));
+        $item = $menu->addChild('Messages', array('uri' => '#'));
 
         return $menu;
     }
