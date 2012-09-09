@@ -135,14 +135,15 @@ class Builder extends ContainerAware
     {
         $menu = $factory->createItem('root');
 
-        $menu->addChild('Home', array('route' => 'BraincraftedBootstrapDemoBundle_components'));
-        $menu->addChild('Help', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $item = $menu->addChild('Home', array('uri' => '#'));
+        $item->setCurrent(true);
+        $item = $menu->addChild('Help', array('uri' => '#'));
         $dropdown = $menu->addChild('Dropdown');
-        $dropdown->addChild('Action', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-        $dropdown->addChild('Another action', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-        $dropdown->addChild('Something else here', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-        $dropdown->addChild('-DIVIDER-');
-        $dropdown->addChild('Separated link', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+            $dropdown->addChild('Action', array('uri' => '#'));
+            $dropdown->addChild('Another action', array('uri' => '#'));
+            $dropdown->addChild('Something else here', array('uri' => '#'));
+            $dropdown->addChild('-DIVIDER-');
+            $dropdown->addChild('Separated link', array('uri' => '#'));
 
         return $menu;
     }

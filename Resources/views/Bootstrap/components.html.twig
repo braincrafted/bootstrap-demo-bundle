@@ -693,68 +693,39 @@ public function pullRight(FactoryInterface $factory, array $options)
 
           <h3>Tabs with dropdowns</h3>
           <div class="bs-docs-example">
-            <ul class="nav nav-tabs">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Help</a></li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
-              </li>
-            </ul>
+            {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:tabsDropdown', {'nav_type': 'tabs'}) }}
           </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-tabs"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a class="dropdown-toggle"
-       data-toggle="dropdown"
-       href="#"&gt;
-        Dropdown
-        &lt;b class="caret"&gt;&lt;/b&gt;
-      &lt;/a&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      &lt;!-- links --&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+{{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:tabsDropdown', {'nav_type': 'tabs'}) }}" }}
+</pre>
+<pre class="prettyprint linenums">
+// src/Braincrafted/BootstrapDemoBundle/Menu/Builder.php
+...
+public function tabsDropdown(FactoryInterface $factory, array $options)
+{
+    $menu = $factory->createItem('root');
+
+    $item = $menu->addChild('Home', array('uri' => '#'));
+    $item->setCurrent(true);
+    $item = $menu->addChild('Help', array('uri' => '#'));
+    $dropdown = $menu->addChild('Dropdown');
+        $dropdown->addChild('Action', array('uri' => '#'));
+        $dropdown->addChild('Another action', array('uri' => '#'));
+        $dropdown->addChild('Something else here', array('uri' => '#'));
+        $dropdown->addChild('-DIVIDER-');
+        $dropdown->addChild('Separated link', array('uri' => '#'));
+
+    return $menu;
+}
+...
 </pre>
 
           <h3>Pills with dropdowns</h3>
           <div class="bs-docs-example">
-            <ul class="nav nav-pills">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Help</a></li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
-              </li>
-            </ul>
+            {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:tabsDropdown', {'nav_type': 'pills'}) }}
           </div>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a class="dropdown-toggle"
-       data-toggle="dropdown"
-       href="#"&gt;
-        Dropdown
-        &lt;b class="caret"&gt;&lt;/b&gt;
-      &lt;/a&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      &lt;!-- links --&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+{{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:tabsDropdown', {'nav_type': 'pills'}) }}" }}
 </pre>
 
 
