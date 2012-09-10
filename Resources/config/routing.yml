@@ -25,3 +25,7 @@ BraincraftedBootstrapDemoBundle_javascript:
 BraincraftedBootstrapDemoBundle_customize:
     pattern:  /bootstrap/customize
     defaults: { _controller: BraincraftedBootstrapDemoBundle:Bootstrap:customize }
+
+BraincraftedBootstrapDemoBundle_extend:
+    pattern:  /bootstrap/extend
+    defaults: { _controller: BraincraftedBootstrapDemoBundle:Bootstrap:extend }
