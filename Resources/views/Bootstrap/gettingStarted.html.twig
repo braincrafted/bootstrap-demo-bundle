@@ -1,6 +1,6 @@
 {% extends 'BraincraftedBootstrapDemoBundle::layout.html.twig' %}
 
-{% block title %}Getting · Twitter Bootstrap{% endblock %}
+{% block title %}Getting · Twitter Bootstrap for Symfony2{% endblock %}
 
 {% block body %}
 
@@ -37,20 +37,26 @@
         ================================================== -->
         <section id="download-bootstrap">
           <div class="page-header">
-            <h1>1. Download</h1>
+            <h1>1. Installation</h1>
           </div>
-          <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
+          <p class="lead">Before installing Twitter Bootstrap for Symfony2 you need to have a working installation of Symfony 2.1 at hand. </p>
 
           <div class="row-fluid">
-            <div class="span6">
-              <h2>Download compiled</h2>
-              <p><strong>Fastest way to get started:</strong> get the compiled and minified versions of our CSS, JS, and images. No docs or original source files.</p>
-              <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" >Download Bootstrap</a></p>
+            <div class="span8">
+              <h2>Composer</h2>
+              <p><strong>Fastest way to get started:</strong> add the following line to your <code>composer.json</code> file and run <code>composer update braincrafted/bootstrap-bundle</code>.</p>
+<pre class="prettyprint linenums">
+{
+    "require": {
+        "braincrafted/bootstrap-bundle": "dev-master"
+    }
+}
+</pre>
             </div>
-            <div class="span6">
+            <div class="span4">
               <h2>Download source</h2>
-              <p>Get the original files for all CSS and JavaScript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
-              <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" >Download Bootstrap source</a></p>
+              <p>Download the source files of the Bootstrap for Symfony2 bundle from Github.</p>
+              <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" >Download source</a></p>
             </div>
           </div>
         </section>
@@ -63,23 +69,47 @@
           <div class="page-header">
             <h1>2. File structure</h1>
           </div>
-          <p class="lead">Within the download you'll find the following file structure and contents, logically grouping common assets and providing both compiled and minified variations.</p>
-          <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:</p>
+          <p class="lead">Within the download you'll find the following file structure and contents.</p>
+          <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap Bundle. You'll see something like this:</p>
 <pre class="prettyprint">
-  bootstrap/
-  ├── css/
-  │   ├── bootstrap.css
-  │   ├── bootstrap.min.css
-  ├── js/
-  │   ├── bootstrap.js
-  │   ├── bootstrap.min.js
-  ├── img/
-  │   ├── glyphicons-halflings.png
-  │   ├── glyphicons-halflings-white.png
-  └── README.md
+  Braincrafted/
+  ├── BootstrapBundle/
+  │   ├── DependencyInjection
+  │   │   ├── BraincraftedBootstrapExtension.php
+  │   │   ├── Configuration.php
+  │   ├── Resources
+  │   │   ├── config
+  │   │   │   ├── services.yml
+  │   │   ├── public
+  │   │   │   ├── css
+  │   │   │   │   ├── bootstrap-responsive.css
+  │   │   │   │   ├── bootstrap.css
+  │   │   │   ├── img
+  │   │   │   │   ├── glyphicons-halflings-white.png
+  │   │   │   │   ├── glyphicons-halflings.png
+  │   │   │   ├── js
+  │   │   │   │   ├── bootstrap.js
+  │   │   │   │   ├── jquery-1.7.2.min.js
+  │   │   ├── views
+  │   │   │   ├── Form
+  │   │   │   │   ├── form_div_layout.html.twig
+  │   │   │   ├── Menu
+  │   │   │   │   ├── menu.html.twig
+  │   │   │   ├── _html5shiv.html.twig
+  │   │   │   ├── _javascripts.html.twig
+  │   │   │   ├── _stylesheets.html.twig
+  │   ├── Twig
+  │   │   ├── BootstrapIconExtension.php
+  │   ├── Voter
+  │   │   ├── RequestRegexVoter.php
+  │   │   ├── RequestVoter.php
+  │   ├── BraincraftedBootstrapBundle.php
+  │   ├── composer.json
+  └── └── README.md
 </pre>
-          <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
-          <p>Please note that all JavaScript plugins require jQuery to be included.</p>
+          <p>The Bootstrap for Symfony2 bundle only contains the compiled and not minified versions of the CSS and Javascript files. We recommend using Assetic to minify the files. If you want to compile your own version of Twitter for Bootstrap you can do this. Just look at the content of <code>_javascripts.html.twig</code> and <code>_stylesheets.html.twig</code>, copy the content into your bundle and replace the CSS and JavaScript files with your own. The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
+          <p>Please note that all JavaScript plugins require jQuery to be included. jQuery is included in this bundle, however we recommend loading it from Google CDN and using the included version only as backup.</p>
+          <p>If you embed the <code>_javascripts.html.twig</code> file you are good to go. This template tries to load jQuerty from Google CDN and embeds the local version if it fails.</p>
         </section>
 
 
@@ -90,7 +120,7 @@
           <div class="page-header">
             <h1>3. What's included</h1>
           </div>
-          <p class="lead">Bootstrap comes equipped with HTML, CSS, and JS for all sorts of things, but they can be summarized with a handful of categories visible at the top of the <a href="http://getbootstrap.com">Bootstrap documentation</a>.</p>
+          <p class="lead">Bootstrap for Symfony2 does not only include Twitter Bootstrap but also come with templates and Twig filters. To make it easy for existing users of Twitter Bootstrap the <a href="http://bootstrap.braincrafted.com">Bootstrap for Symfony2 documentation</a> uses the same format and categories as the documentation of Twitter Bootstrap.</p>
 
           <h2>Docs sections</h2>
           <h4><a href="http://twitter.github.com/bootstrap/scaffolding.html">Scaffolding</a></h4>
@@ -107,8 +137,8 @@
           <ul>
             <li>Button groups</li>
             <li>Button dropdowns</li>
-            <li>Navigational tabs, pills, and lists</li>
-            <li>Navbar</li>
+            <li>Navigational tabs, pills, and lists (theme for KnpMenuBundle)</li>
+            <li>Navbar (theme for KnpMenuBundle)</li>
             <li>Labels</li>
             <li>Badges</li>
             <li>Page headers and hero unit</li>
@@ -155,12 +185,11 @@
   &lt;head&gt;
     &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
     &lt;!-- Bootstrap --&gt;
-    &lt;link href="css/bootstrap.min.css" rel="stylesheet"&gt;
+    {{ "{% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}" }}
   &lt;/head&gt;
   &lt;body&gt;
     &lt;h1&gt;Hello, world!&lt;/h1&gt;
-    &lt;script src="http://code.jquery.com/jquery-latest.js"&gt;&lt;/script&gt;
-    &lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
+    {{ "{% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}" }}
   &lt;/body&gt;
 &lt;/html&gt;
 </pre>
