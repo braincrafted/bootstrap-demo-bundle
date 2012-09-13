@@ -1,0 +1,281 @@
+{% extends 'BraincraftedBootstrapDemoBundle::layout.html.twig' %}
+
+{% block title %}Getting · Twitter Bootstrap for Symfony2{% endblock %}
+
+{% block body %}
+
+<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>Getting started</h1>
+    <p class="lead">Overview of the project, its contents, and how to get started with a simple template.</p>
+  </div>
+</header>
+
+
+  <div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+          <li><a href="#download-bootstrap"><i class="icon-chevron-right"></i> Download</a></li>
+          <li><a href="#configuration"><i class="icon-chevron-right"></i> Configuration</a></li>
+          <li><a href="#file-structure"><i class="icon-chevron-right"></i> File structure</a></li>
+          <li><a href="#contents"><i class="icon-chevron-right"></i> What's included</a></li>
+          <li><a href="#html-template"><i class="icon-chevron-right"></i> HTML template</a></li>
+          <li><a href="#examples"><i class="icon-chevron-right"></i> Examples</a></li>
+          <li><a href="#what-next"><i class="icon-chevron-right"></i> What next?</a></li>
+        </ul>
+      </div>
+      <div class="span9">
+
+
+
+        <!-- Download
+        ================================================== -->
+        <section id="download-bootstrap">
+          <div class="page-header">
+            <h1>1. Installation</h1>
+          </div>
+          <p class="lead">Before installing Twitter Bootstrap for Symfony2 you need to have a working installation of Symfony 2.1 at hand. </p>
+
+          <div class="row-fluid">
+            <div class="span8">
+              <h2>Composer</h2>
+              <p><strong>Fastest way to get started:</strong> add the following line to your <code>composer.json</code> file and run <code>composer update braincrafted/bootstrap-bundle</code>.</p>
+<pre class="prettyprint linenums">
+{
+    "require": {
+        "braincrafted/bootstrap-bundle": "dev-master"
+    }
+}
+</pre>
+            </div>
+            <div class="span4">
+              <h2>Download source</h2>
+              <p>Download the source files of the Bootstrap for Symfony2 bundle from Github.</p>
+              <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" >Download source</a></p>
+            </div>
+          </div>
+
+          <div class="row-fluid">
+            <div class="span12">
+              <h2>Activate</h2>
+              <p>You have to add <code>BraincraftedBootstrapBundle</code> to your <code>AppKernel.php</code>:</p>
+<pre class="prettyprint linenums">
+# app/AppKernel.php
+...
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = array(
+            ...
+            new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle()
+        );
+        ...
+        return $bundles;
+    }
+    ...
+}
+</pre>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- Configuration
+        ================================================== -->
+        <section id="configuration">
+          <div class="page-header">
+            <h1>2. Configuration</h1>
+          </div>
+          <p class="lead">After you installed BootstrapBundle using Composer you have to add some lines to your apps <code>config.yml</code> and start using it right away</p>
+
+          <div class="row-fluid">
+            <div class="span12">
+              <h2>Form theme</h2>
+              <p>BootstrapBundle can automatically style every form in your application with Twitter Bootstrap. You just need to tell Twig to use the theme that comes with the bundle.</p>
+<pre class="prettyprint linenums">
+# app/config.yml
+twig:
+    form:
+        resources:
+            - "BraincraftedBootstrapBundle:Form:form_div_layout.html.twig"
+</pre>
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="span12">
+              <h2>KnpMenu theme</h2>
+              <p>If you want to use KnpMenu to display menus in the Twitter Bootstrap style you have to tell KnpMenu to use the theme provided by BootstrapBundle.</p>
+<pre class="prettyprint linenums">
+# app/config.yml
+knp_menu:
+   twig:
+       template: "BraincraftedBootstrapBundle:Menu:menu.html.twig"
+</pre>
+            </div>
+          </div>
+        </section>
+
+
+
+        <!-- File structure
+        ================================================== -->
+        <section id="file-structure">
+          <div class="page-header">
+            <h1>3. File structure</h1>
+          </div>
+          <p class="lead">Within the download you'll find the following file structure and contents.</p>
+          <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap Bundle. You'll see something like this:</p>
+<pre class="prettyprint">
+  Braincrafted/
+  ├── BootstrapBundle/
+  │   ├── DependencyInjection
+  │   │   ├── BraincraftedBootstrapExtension.php
+  │   │   ├── Configuration.php
+  │   ├── Resources
+  │   │   ├── config
+  │   │   │   ├── services.yml
+  │   │   ├── public
+  │   │   │   ├── css
+  │   │   │   │   ├── bootstrap-responsive.css
+  │   │   │   │   ├── bootstrap.css
+  │   │   │   ├── img
+  │   │   │   │   ├── glyphicons-halflings-white.png
+  │   │   │   │   ├── glyphicons-halflings.png
+  │   │   │   ├── js
+  │   │   │   │   ├── bootstrap.js
+  │   │   │   │   ├── jquery-1.7.2.min.js
+  │   │   ├── views
+  │   │   │   ├── Form
+  │   │   │   │   ├── form_div_layout.html.twig
+  │   │   │   ├── Menu
+  │   │   │   │   ├── menu.html.twig
+  │   │   │   ├── _html5shiv.html.twig
+  │   │   │   ├── _javascripts.html.twig
+  │   │   │   ├── _stylesheets.html.twig
+  │   ├── Twig
+  │   │   ├── BootstrapIconExtension.php
+  │   ├── Voter
+  │   │   ├── RequestRegexVoter.php
+  │   │   ├── RequestVoter.php
+  │   ├── BraincraftedBootstrapBundle.php
+  │   ├── composer.json
+  └── └── README.md
+</pre>
+          <p>The Bootstrap for Symfony2 bundle only contains the compiled and not minified versions of the CSS and Javascript files. We recommend using Assetic to minify the files. If you want to compile your own version of Twitter for Bootstrap you can do this. Just look at the content of <code>_javascripts.html.twig</code> and <code>_stylesheets.html.twig</code>, copy the content into your bundle and replace the CSS and JavaScript files with your own. The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
+          <p>Please note that all JavaScript plugins require jQuery to be included. jQuery is included in this bundle, however we recommend loading it from Google CDN and using the included version only as backup.</p>
+          <p>If you embed the <code>_javascripts.html.twig</code> file you are good to go. This template tries to load jQuerty from Google CDN and embeds the local version if it fails.</p>
+        </section>
+
+
+
+        <!-- Contents
+        ================================================== -->
+        <section id="contents">
+          <div class="page-header">
+            <h1>4. What's included</h1>
+          </div>
+          <p class="lead">Bootstrap for Symfony2 does not only include Twitter Bootstrap but also come with templates and Twig filters. To make it easy for existing users of Twitter Bootstrap the <a href="http://bootstrap.braincrafted.com">Bootstrap for Symfony2 documentation</a> uses the same format and categories as the documentation of Twitter Bootstrap.</p>
+
+          <h2>Docs sections</h2>
+          <h4><a href="{{ path('BraincraftedBootstrapDemoBundle_scaffolding') }}">Scaffolding</a></h4>
+          <p>Global styles for the body to reset type and background, link styles, grid system, and two simple layouts.</p>
+          <h4><a href="{{ path('BraincraftedBootstrapDemoBundle_baseCss') }}">Base CSS</a></h4>
+          <p>Styles for common HTML elements like typography, code, tables, forms, and buttons. Also includes <a href="http://glyphicons.com">Glyphicons</a>, a great little icon set.</p>
+          <h4><a href="{{ path('BraincraftedBootstrapDemoBundle_components') }}">Components</a></h4>
+          <p>Basic styles for common interface components like tabs and pills, navbar, alerts, page headers, and more.</p>
+          <h4><a href="{{ path('BraincraftedBootstrapDemoBundle_javascript') }}">Javascript plugins</a></h4>
+          <p>Similar to Components, these Javascript plugins are interactive components for things like tooltips, popovers, modals, and more.</p>
+
+          <h2>List of components</h2>
+          <p>Together, the <strong>Components</strong> and <strong>Javascript plugins</strong> sections provide the following interface elements:</p>
+          <ul>
+            <li>Button groups</li>
+            <li>Button dropdowns</li>
+            <li>Navigational tabs, pills, and lists (theme for KnpMenuBundle)</li>
+            <li>Navbar (theme for KnpMenuBundle)</li>
+            <li>Labels</li>
+            <li>Badges</li>
+            <li>Page headers and hero unit</li>
+            <li>Thumbnails</li>
+            <li>Alerts</li>
+            <li>Progress bars</li>
+            <li>Modals</li>
+            <li>Dropdowns</li>
+            <li>Tooltips</li>
+            <li>Popovers</li>
+            <li>Accordion</li>
+            <li>Carousel</li>
+            <li>Typeahead</li>
+          </ul>
+          <p>In future guides, we may walk through these components individually in more detail. Until then, look for each of these in the documentation for information on how to utilize and customize them.</p>
+        </section>
+
+
+
+        <!-- HTML template
+        ================================================== -->
+        <section id="html-template">
+          <div class="page-header">
+            <h1>5. Basic HTML template</h1>
+          </div>
+          <p class="lead">With a brief intro into the contents out of the way, we can focus putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="#file-structure">File structure</a>.</p>
+          <p>Now, here's a look at a <strong>typical HTML file</strong>:</p>
+<pre class="prettyprint linenums">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, world!&lt;/h1&gt;
+    &lt;script src="http://code.jquery.com/jquery-latest.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+          <p>To make this <strong>a Bootstrapped template</strong>, just include the appropriate CSS and JS files:</p>
+<pre class="prettyprint linenums">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+    &lt;!-- Bootstrap --&gt;
+    {{ "{% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}" }}
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, world!&lt;/h1&gt;
+    {{ "{% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}" }}
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+          <p><strong>And you're set!</strong> With those two files added, you can begin to develop any site or application with Bootstrap.</p>
+        </section>
+
+
+
+        <!-- Next
+        ================================================== -->
+        <section id="what-next">
+          <div class="page-header">
+            <h1>What next?</h1>
+          </div>
+          <p class="lead">Head to Github and finally starting installing BootstrapBundle or take a look at BootstrapDemoBundle and view the source code of this documentaton.</p>
+          <a class="btn btn-large btn-primary" href="https://github.com/braincrafted/bootstrap-bundle" >BootstrapBundle</a>
+          <a class="btn btn-large" href="https://github.com/braincrafted/bootstrap-demo-bundle" style="margin-left: 5px;" >BootstrapDemoBundle</a>
+        </section>
+
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

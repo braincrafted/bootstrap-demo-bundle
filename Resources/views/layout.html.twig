@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<title>{% block title %}Twitter Bootstrap for Symfony2{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Twitter Bootstrap for Symfony2 brings the famous Twitter Bootstrap to Symfony2. In a snap.">
+<meta name="author" content="Florian Eckerstorfer">
+
+{% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}
+<link rel="stylesheet" href="/bundles/braincraftedbootstrapdemo/css/docs.css">
+<link rel="stylesheet" href="/bundles/braincraftedbootstrapdemo/css/bc-docs.css">
+<link rel="stylesheet" href="/bundles/braincraftedbootstrapdemo/css/google-code-prettify.css">
+
+{% include 'BraincraftedBootstrapBundle::_html5shiv.html.twig' %}
+
+</head>
+
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">Bootstrap</a>
+          <div class="nav-collapse collapse">
+            {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:navbar', {'nav_type': 'navbar'}) }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% block body %}{% endblock %}
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Made in Vienna by <a href="http://florianeckerstorfer.com">Florian Eckerstorfer</a>.</p>
+        <p>Twitter Bootstrap is designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Javascript and CSSode licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Symfony2 bundle licensed under the <a href="http://opensource.org/licenses/MIT">MIT License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <ul class="footer-links">
+          <li><a href="http://braincrafted.com">Read the blog</a></li>
+          <li><a href="https://github.com/braincrafted/bootstrap-bundle/issues?state=open">Submit issues</a></li>
+          <li><a href="https://github.com/braincrafted/bootstrap-bundle/wiki">Roadmap and changelog</a></li>
+        </ul>
+      </div>
+    </footer>
+
+{% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}
+<script src="{{ asset('/bundles/braincraftedbootstrapdemo/js/application.js') }}"></script>
+<script src="/bundles/braincraftedbootstrapdemo/js/google-code-prettify.js"></script>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+</body>
+
+</html>
