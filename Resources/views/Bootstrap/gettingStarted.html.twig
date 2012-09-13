@@ -22,6 +22,7 @@
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
           <li><a href="#download-bootstrap"><i class="icon-chevron-right"></i> Download</a></li>
+          <li><a href="#configuration"><i class="icon-chevron-right"></i> Configuration</a></li>
           <li><a href="#file-structure"><i class="icon-chevron-right"></i> File structure</a></li>
           <li><a href="#contents"><i class="icon-chevron-right"></i> What's included</a></li>
           <li><a href="#html-template"><i class="icon-chevron-right"></i> HTML template</a></li>
@@ -59,6 +60,66 @@
               <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" >Download source</a></p>
             </div>
           </div>
+
+          <div class="row-fluid">
+            <div class="span12">
+              <h2>Activate</h2>
+              <p>You have to add <code>BraincraftedBootstrapBundle</code> to your <code>AppKernel.php</code>:</p>
+<pre class="prettyprint linenums">
+# app/AppKernel.php
+...
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = array(
+            ...
+            new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle()
+        );
+        ...
+        return $bundles;
+    }
+    ...
+}
+</pre>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- Configuration
+        ================================================== -->
+        <section id="configuration">
+          <div class="page-header">
+            <h1>2. Configuration</h1>
+          </div>
+          <p class="lead">After you installed BootstrapBundle using Composer you have to add some lines to your apps <code>config.yml</code> and start using it right away</p>
+
+          <div class="row-fluid">
+            <div class="span12">
+              <h2>Form theme</h2>
+              <p>BootstrapBundle can automatically style every form in your application with Twitter Bootstrap. You just need to tell Twig to use the theme that comes with the bundle.</p>
+<pre class="prettyprint linenums">
+# app/config.yml
+twig:
+    form:
+        resources:
+            - "BraincraftedBootstrapBundle:Form:form_div_layout.html.twig"
+</pre>
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="span12">
+              <h2>KnpMenu theme</h2>
+              <p>If you want to use KnpMenu to display menus in the Twitter Bootstrap style you have to tell KnpMenu to use the theme provided by BootstrapBundle.</p>
+<pre class="prettyprint linenums">
+# app/config.yml
+knp_menu:
+   twig:
+       template: "BraincraftedBootstrapBundle:Menu:menu.html.twig"
+</pre>
+            </div>
+          </div>
         </section>
 
 
@@ -67,7 +128,7 @@
         ================================================== -->
         <section id="file-structure">
           <div class="page-header">
-            <h1>2. File structure</h1>
+            <h1>3. File structure</h1>
           </div>
           <p class="lead">Within the download you'll find the following file structure and contents.</p>
           <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap Bundle. You'll see something like this:</p>
@@ -118,18 +179,18 @@
         ================================================== -->
         <section id="contents">
           <div class="page-header">
-            <h1>3. What's included</h1>
+            <h1>4. What's included</h1>
           </div>
           <p class="lead">Bootstrap for Symfony2 does not only include Twitter Bootstrap but also come with templates and Twig filters. To make it easy for existing users of Twitter Bootstrap the <a href="http://bootstrap.braincrafted.com">Bootstrap for Symfony2 documentation</a> uses the same format and categories as the documentation of Twitter Bootstrap.</p>
 
           <h2>Docs sections</h2>
-          <h4><a href="http://twitter.github.com/bootstrap/scaffolding.html">Scaffolding</a></h4>
+          <h4><a href="{{ path('BraincraftedBootstrapDemoBundle_scaffolding') }}">Scaffolding</a></h4>
           <p>Global styles for the body to reset type and background, link styles, grid system, and two simple layouts.</p>
-          <h4><a href="http://twitter.github.com/bootstrap/base-css.html">Base CSS</a></h4>
+          <h4><a href="{{ path('BraincraftedBootstrapDemoBundle_baseCss') }}">Base CSS</a></h4>
           <p>Styles for common HTML elements like typography, code, tables, forms, and buttons. Also includes <a href="http://glyphicons.com">Glyphicons</a>, a great little icon set.</p>
-          <h4><a href="http://twitter.github.com/bootstrap/components.html">Components</a></h4>
+          <h4><a href="{{ path('BraincraftedBootstrapDemoBundle_components') }}">Components</a></h4>
           <p>Basic styles for common interface components like tabs and pills, navbar, alerts, page headers, and more.</p>
-          <h4><a href="http://twitter.github.com/bootstrap/javascript.html">Javascript plugins</a></h4>
+          <h4><a href="{{ path('BraincraftedBootstrapDemoBundle_javascript') }}">Javascript plugins</a></h4>
           <p>Similar to Components, these Javascript plugins are interactive components for things like tooltips, popovers, modals, and more.</p>
 
           <h2>List of components</h2>
@@ -162,7 +223,7 @@
         ================================================== -->
         <section id="html-template">
           <div class="page-header">
-            <h1>4. Basic HTML template</h1>
+            <h1>5. Basic HTML template</h1>
           </div>
           <p class="lead">With a brief intro into the contents out of the way, we can focus putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="#file-structure">File structure</a>.</p>
           <p>Now, here's a look at a <strong>typical HTML file</strong>:</p>
@@ -198,50 +259,15 @@
 
 
 
-        <!-- Examples
-        ================================================== -->
-        <section id="examples">
-          <div class="page-header">
-            <h1>5. Examples</h1>
-          </div>
-          <p class="lead">Move beyond the base template with a few example layouts. We encourage folks to iterate on these examples and not simply use them as an end result.</p>
-          <ul class="thumbnails bootstrap-examples">
-            <li class="span3">
-              <a class="thumbnail" href="examples/hero.html">
-                <img src="assets/img/examples/bootstrap-example-hero.jpg" alt="">
-              </a>
-              <h4>Basic marketing site</h4>
-              <p>Featuring a hero unit for a primary message and three supporting elements.</p>
-            </li>
-            <li class="span3">
-              <a class="thumbnail" href="examples/fluid.html">
-                <img src="assets/img/examples/bootstrap-example-fluid.jpg" alt="">
-              </a>
-              <h4>Fluid layout</h4>
-              <p>Uses our new responsive, fluid grid system to create a seamless liquid layout.</p>
-            </li>
-            <li class="span3">
-              <a class="thumbnail" href="examples/starter-template.html">
-                <img src="assets/img/examples/bootstrap-example-starter.jpg" alt="">
-              </a>
-              <h4>Starter template</h4>
-              <p>A barebones HTML document with all the Bootstrap CSS and javascript included.</p>
-            </li>
-          </ul>
-        </section>
-
-
-
-
         <!-- Next
         ================================================== -->
         <section id="what-next">
           <div class="page-header">
             <h1>What next?</h1>
           </div>
-          <p class="lead">Head to the docs for information, examples, and code snippets, or take the next leap and customize Bootstrap for any upcoming project.</p>
-          <a class="btn btn-large btn-primary" href="./scaffolding.html" >Visit the Bootstrap docs</a>
-          <a class="btn btn-large" href="./customize.html" style="margin-left: 5px;" >Customize Bootstrap</a>
+          <p class="lead">Head to Github and finally starting installing BootstrapBundle or take a look at BootstrapDemoBundle and view the source code of this documentaton.</p>
+          <a class="btn btn-large btn-primary" href="https://github.com/braincrafted/bootstrap-bundle" >BootstrapBundle</a>
+          <a class="btn btn-large" href="https://github.com/braincrafted/bootstrap-demo-bundle" style="margin-left: 5px;" >BootstrapDemoBundle</a>
         </section>
 
 

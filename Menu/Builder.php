@@ -1,28 +1,59 @@
 <?php
+
+/**
+ * This file is part of BraincraftedBootstrapDemoBundle.
+ * (c) 2012 Florian Eckerstorfer
+ */
+
 namespace Braincrafted\BootstrapDemoBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
+/**
+ * Builder
+ *
+ * @category   MenuBuilder
+ * @package    BraincraftedBootstrapBundle
+ * @subpackage Menu
+ * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright  2012 Florian Eckerstorfer
+ * @license    http://opensource.org/licenses/MIT The MIT License
+ * @link       http://bootstrap.braincrafted.com Bootstrap for Symfony2
+ */
 class Builder extends ContainerAware
 {
-    public function navBar(FactoryInterface $factory, array $options)
+    /**
+     * Builds the navbar menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
+    public function navbar(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
 
-        $menu->addChild('Overview', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
+        $menu->addChild('Home', array('route' => 'BraincraftedBootstrapDemoBundle_index'));
+        $menu->addChild('Get started', array('route' => 'BraincraftedBootstrapDemoBundle_gettingStarted'));
         $menu->addChild('Scaffolding', array('route' => 'BraincraftedBootstrapDemoBundle_scaffolding'));
         $menu->addChild('Base CSS', array('route' => 'BraincraftedBootstrapDemoBundle_baseCss'));
         $menu->addChild('Components', array('route' => 'BraincraftedBootstrapDemoBundle_components'));
-        $menu->addChild('Javascript plugins', array('route' => 'BraincraftedBootstrapDemoBundle_javascript'));
-        $menu->addChild('Using LESS', array('route' => 'BraincraftedBootstrapDemoBundle_less'));
-        $menu->addChild('-DIVIDER-');
-        $menu->addChild('Customize', array('uri' => '#'));
-        $menu->addChild('Examples', array('uri' => '#'));
+        $menu->addChild('Javascript', array('route' => 'BraincraftedBootstrapDemoBundle_javascript'));
+        $menu->addChild('Forms', array('route' => 'BraincraftedBootstrapDemoBundle_forms'));
 
         return $menu;
     }
 
+    /**
+     * Builds the navList menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
     public function navList(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
@@ -40,23 +71,14 @@ class Builder extends ContainerAware
         return $menu;
     }
 
-    public function navListIcons(FactoryInterface $factory, array $options)
-    {
-        $menu = $factory->createItem('root');
-
-        $menu->addChild('List Header');
-        $menu->addChild('.icon-home Home', array('route' => 'BraincraftedBootstrapDemoBundle_components'));
-        $menu->addChild('.icon-book Library', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-        $menu->addChild('.icon-pencil Applications', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-        $menu->addChild('Another List Header');
-        $menu->addChild('.icon-user Profile', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-        $menu->addChild('.icon-cog Settings', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-        $menu->addChild('d1', array('attributes' => array('divider' => true)));
-        $menu->addChild('.icon-flag Help', array('route' => 'BraincraftedBootstrapDemoBundle_overview'));
-
-        return $menu;
-    }
-
+    /**
+     * Builds the basic tabs menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
     public function basicTabs(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
@@ -69,6 +91,14 @@ class Builder extends ContainerAware
         return $menu;
     }
 
+    /**
+     * Builds the basic pills menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
     public function basicPills(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
@@ -81,6 +111,14 @@ class Builder extends ContainerAware
         return $menu;
     }
 
+    /**
+     * Builds the disabled state menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
     public function disabledState(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
@@ -95,6 +133,14 @@ class Builder extends ContainerAware
         return $menu;
     }
 
+    /**
+     * Builds the pull right menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
     public function pullRight(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
@@ -109,6 +155,14 @@ class Builder extends ContainerAware
         return $menu;
     }
 
+    /**
+     * Builds the stacked tabs menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
     public function stackedTabs(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
@@ -121,6 +175,14 @@ class Builder extends ContainerAware
         return $menu;
     }
 
+    /**
+     * Builds the stacked pills menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
     public function stackedPills(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
@@ -132,6 +194,14 @@ class Builder extends ContainerAware
         return $menu;
     }
 
+    /**
+     * Builds the tabs with dropdown menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
     public function tabsDropdown(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
@@ -149,6 +219,14 @@ class Builder extends ContainerAware
         return $menu;
     }
 
+    /**
+     * Builds the pills with dropdown menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
     public function pillsDropdown(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
@@ -165,6 +243,14 @@ class Builder extends ContainerAware
         return $menu;
     }
 
+    /**
+     * Builds the basic navbar menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
     public function basicNavbar(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
@@ -177,6 +263,14 @@ class Builder extends ContainerAware
         return $menu;
     }
 
+    /**
+     * Builds the navbar with divider menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
     public function dividerNavbar(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
@@ -191,6 +285,14 @@ class Builder extends ContainerAware
         return $menu;
     }
 
+    /**
+     * Builds the responsive navbar menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
     public function responsiveNavbar(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
@@ -212,6 +314,14 @@ class Builder extends ContainerAware
         return $menu;
     }
 
+    /**
+     * Builds the right responsive navbar menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
     public function responsiveNavbarRight(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
@@ -227,5 +337,4 @@ class Builder extends ContainerAware
 
         return $menu;
     }
-
 }

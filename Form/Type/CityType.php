@@ -11,7 +11,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * DefaultStylesFormType
+ * CityType
  *
  * @category   FormType
  * @package    BraincraftedBootstrapBundle
@@ -21,23 +21,22 @@ use Symfony\Component\Form\FormBuilderInterface;
  * @license    http://opensource.org/licenses/MIT The MIT License
  * @link       http://bootstrap.braincrafted.com Bootstrap for Symfony2
  */
-class DefaultStylesFormType extends AbstractType
+class CityType extends AbstractType
 {
     /**
      * {@inheritDoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('labelName', 'text', array(
-            'label'         => 'Label name',
-            'required'      => false,
-            'attr'  => array(
-                'placeholder'   => 'Type something...',
-                'help_block'    => 'Example block-level help text here.'
-            ),
+        $builder->add('name', 'text', array(
+            'label' => 'Name'
         ));
-        $builder->add('checkMeOut', 'checkbox', array(
-            'label'     => 'Check me out'
+        $builder->add('mayorEmail', 'email', array(
+            'label' => 'Mayors email address'
+        ));
+        $builder->add('population', 'integer', array(
+            'label' => 'Population',
+            'attr'  => array('class' => 'span2')
         ));
     }
 
@@ -46,6 +45,6 @@ class DefaultStylesFormType extends AbstractType
      */
     public function getName()
     {
-        return 'default_styles_form';
+        return 'city_form';
     }
 }

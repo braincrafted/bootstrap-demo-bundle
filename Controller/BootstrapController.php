@@ -1,21 +1,15 @@
 <?php
 
 /**
- * BootstrapController
- *
- * PHP Version 5.3.10
- *
- * @category  Controller
- * @package   BraincraftedBootstrapBundle
- * @author    Florian Eckerstorfer <florian@theroadtojoy.at>
- * @copyright 2012 Florian Eckerstorfer
- * @license   http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
+ * This file is part of BraincraftedBootstrapDemoBundle.
+ * (c) 2012 Florian Eckerstorfer
  */
 
 namespace Braincrafted\BootstrapDemoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Braincrafted\BootstrapDemoBundle\Entity\City;
 use Braincrafted\BootstrapDemoBundle\Form\Type\DefaultStylesFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\ControlStatesFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\SupportedFormControlsType;
@@ -23,39 +17,56 @@ use Braincrafted\BootstrapDemoBundle\Form\Type\ExtendingControlsFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\HorizontalFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\InlineFormType;
 use Braincrafted\BootstrapDemoBundle\Form\Type\SearchFormType;
+use Braincrafted\BootstrapDemoBundle\Form\Type\CityType;
 
 /**
  * BootstrapController
  *
- * @category  Controller
- * @package   BraincraftedBootstrapBundle
- * @author    Florian Eckerstorfer <florian@theroadtojoy.at>
- * @copyright 2012 Florian Eckerstorfer
- * @license   http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
+ * @category   Controller
+ * @package    BraincraftedBootstrapBundle
+ * @subpackage Controller
+ * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright  2012 Florian Eckerstorfer
+ * @license    http://opensource.org/licenses/MIT The MIT License
+ * @link       http://bootstrap.braincrafted.com Bootstrap for Symfony2
  */
 class BootstrapController extends Controller
 {
+    /**
+     * The index action.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response The response
+     */
     public function indexAction()
     {
-        return $this->render(
-            'BraincraftedBootstrapDemoBundle:Bootstrap:index.html.twig'
-        );
+        return $this->render('BraincraftedBootstrapDemoBundle:Bootstrap:index.html.twig');
     }
 
+    /**
+     * The getting started action.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response The response
+     */
     public function gettingStartedAction()
     {
-        return $this->render(
-            'BraincraftedBootstrapDemoBundle:Bootstrap:gettingStarted.html.twig'
-        );
+        return $this->render('BraincraftedBootstrapDemoBundle:Bootstrap:gettingStarted.html.twig');
     }
 
+    /**
+     * The scaffolding action.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response The response
+     */
     public function scaffoldingAction()
     {
-        return $this->render(
-            'BraincraftedBootstrapDemoBundle:Bootstrap:scaffolding.html.twig'
-        );
+        return $this->render('BraincraftedBootstrapDemoBundle:Bootstrap:scaffolding.html.twig');
     }
 
+    /**
+     * The base CSS action.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response The response
+     */
     public function baseCssAction()
     {
         $defaultStylesForm     = $this->createForm(new DefaultStylesFormType());
@@ -82,6 +93,11 @@ class BootstrapController extends Controller
         );
     }
 
+    /**
+     * The components action.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response The response
+     */
     public function componentsAction()
     {
         return $this->render(
@@ -89,6 +105,11 @@ class BootstrapController extends Controller
         );
     }
 
+    /**
+     * The javascript action.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response The response
+     */
     public function javascriptAction()
     {
         return $this->render(
@@ -96,10 +117,27 @@ class BootstrapController extends Controller
         );
     }
 
-    public function customizeAction()
+    /**
+     * The forms action.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response The response
+     */
+    public function formsAction()
     {
-        return $this->render(
-            'BraincraftedBootstrapDemoBundle:Bootstrap:customize.html.twig'
-        );
+        $request = $this->getRequest();
+
+        $city = new City();
+        $cityForm = $this->createForm(new CityType(), $city);
+
+        if ($request->getMethod() == 'POST') {
+            $cityForm->bind($request);
+
+            if ($cityForm->isValid()) {
+            }
+        }
+
+        return $this->render('BraincraftedBootstrapDemoBundle:Bootstrap:forms.html.twig', array(
+            'cityForm' => $cityForm->createView()
+        ));
     }
 }

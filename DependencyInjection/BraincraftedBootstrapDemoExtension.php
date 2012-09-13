@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of BraincraftedBootstrapDemoBundle.
+ * (c) 2012 Florian Eckerstorfer
+ */
+
 namespace Braincrafted\BootstrapDemoBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -8,9 +13,15 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * BraincraftedBootstrapDemoExtension
  *
- * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
+ * @category   Extension
+ * @package    BraincraftedBootstrapBundle
+ * @subpackage DependencyInjection
+ * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright  2012 Florian Eckerstorfer
+ * @license    http://opensource.org/licenses/MIT The MIT License
+ * @link       http://bootstrap.braincrafted.com Bootstrap for Symfony2
  */
 class BraincraftedBootstrapDemoExtension extends Extension
 {
