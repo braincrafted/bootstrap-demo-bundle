@@ -100,9 +100,15 @@ class BootstrapController extends Controller
      */
     public function componentsAction()
     {
-        return $this->render(
-            'BraincraftedBootstrapDemoBundle:Bootstrap:components.html.twig'
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            range('a', 'z'),
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            10/*limit per page*/
         );
+        return $this->render('BraincraftedBootstrapDemoBundle:Bootstrap:components.html.twig', array(
+            'pagination'    => $pagination
+        ));
     }
 
     /**
@@ -112,9 +118,8 @@ class BootstrapController extends Controller
      */
     public function javascriptAction()
     {
-        return $this->render(
-            'BraincraftedBootstrapDemoBundle:Bootstrap:javascript.html.twig'
-        );
+        return $this->render('BraincraftedBootstrapDemoBundle:Bootstrap:javascript.html.twig', array(
+        ));
     }
 
     /**

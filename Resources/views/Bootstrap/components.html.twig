@@ -1300,29 +1300,10 @@ public function dropdownNavbar(FactoryInterface $factory, array $options)
           <h2>Standard pagination</h2>
           <p>Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
           <div class="bs-docs-example">
-            <div class="pagination">
-              <ul>
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-              </ul>
-            </div>
+            {{ pagination.render()|raw }}
           </div>
 <pre class="prettyprint linenums">
-&lt;div class="pagination"&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
+{{ '{{ pagination.render()|raw }}' }}
 </pre>
 
 
@@ -1331,78 +1312,29 @@ public function dropdownNavbar(FactoryInterface $factory, array $options)
 
           <h2>Options</h2>
 
-          <h3>Disabled and active states</h3>
-          <p>Links are customizable for different circumstances. Use <code>.disabled</code> for unclickable links and <code>.active</code> to indicate the current page.</p>
-          <div class="bs-docs-example">
-            <div class="pagination pagination-centered">
-              <ul>
-                <li class="disabled"><a href="#">&laquo;</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-             </ul>
-            </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="pagination"&gt;
-  &lt;ul&gt;
-    &lt;li class="disabled"&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
-    ...
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre>
-          <p>You can optionally swap out active or disabled anchors for spans to remove click functionality while retaining intended styles.</p>
-<pre class="prettyprint linenums">
-&lt;div class="pagination"&gt;
-  &lt;ul&gt;
-    &lt;li class="disabled"&gt;&lt;span&gt;Prev&lt;/span&gt;&lt;/li&gt;
-    &lt;li class="active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
-    ...
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre>
 
           <h3>Alignment</h3>
-          <p>Add one of two optional classes to change the alignment of pagination links: <code>.pagination-centered</code> and <code>.pagination-right</code>.</p>
+          <p>You can change the alignment of the pagination widget by adding an <code>alignment</code> option:</p>
           <div class="bs-docs-example">
-            <div class="pagination pagination-centered">
-              <ul>
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-             </ul>
-            </div>
+            {{ pagination.render(null, {}, {'alignment': 'center'})|raw }}
           </div>
 <pre class="prettyprint linenums">
-&lt;div class="pagination pagination-centered"&gt;
-  ...
-&lt;/div&gt;
+{{ "{{ pagination.render(null, {}, {'alignment': 'center'})|raw }}" }}
 </pre>
           <div class="bs-docs-example">
-            <div class="pagination pagination-right">
-              <ul>
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-              </ul>
-            </div>
+            {{ pagination.render(null, {}, {'alignment': 'right'})|raw }}
           </div>
 <pre class="prettyprint linenums">
-&lt;div class="pagination pagination-right"&gt;
-  ...
-&lt;/div&gt;
+{{ "{{ pagination.render(null, {}, {'alignment': 'right'})|raw }}" }}
+</pre>
+
+          <h3>Labels</h3>
+          <p>Change the text of the labels:</p>
+          <div class="bs-docs-example">
+            {{ pagination.render(null, {}, {'alignment': 'center', 'first_label': '&lt;&lt;', 'last_label': '&gt;&gt;', 'prev_label': '&lt;', 'next_label': '&gt;'})|raw }}
+          </div>
+<pre class="prettyprint linenums">
+{{ "{{ pagination.render(null, {}, {'alignment': 'center', 'first_label': '&amp;lt;&amp;lt;', 'last_label': '&amp;gt;&amp;gt;', 'prev_label': '&amp;lt;', 'next_label': '&amp;gt;'})|raw }}" }}
 </pre>
 
 
@@ -1415,53 +1347,30 @@ public function dropdownNavbar(FactoryInterface $factory, array $options)
           <h3>Default example</h3>
           <p>By default, the pager centers links.</p>
           <div class="bs-docs-example">
-            <ul class="pager">
-              <li><a href="#">Previous</a></li>
-              <li><a href="#">Next</a></li>
-            </ul>
+            {{ pagination.render(null, {}, {'style': 'pager'})|raw }}
           </div>
 <pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Previous&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+{{ "{{ pagination.render(null, {}, {'style': 'pager'})|raw }}" }}
 </pre>
 
           <h3>Aligned links</h3>
           <p>Alternatively, you can align each link to the sides:</p>
           <div class="bs-docs-example">
-            <ul class="pager">
-              <li class="previous"><a href="#">&larr; Older</a></li>
-              <li class="next"><a href="#">Newer &rarr;</a></li>
-            </ul>
+            {{ pagination.render(null, {}, {'style': 'pager', 'aligned': true})|raw }}
           </div>
 <pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li class="previous"&gt;
-    &lt;a href="#"&gt;&amp;larr; Older&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li class="next"&gt;
-    &lt;a href="#"&gt;Newer &amp;rarr;&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+{{ "{{ pagination.render(null, {}, {'style': 'pager', 'aligned': true})|raw }}" }}
 </pre>
 
-          <h3>Optional disabled state</h3>
-          <p>Pager links also use the general <code>.disabled</code> utility class from the pagination.</p>
+          <h3>Labels</h3>
+          <p>You can change the text of the buttons:</p>
           <div class="bs-docs-example">
-            <ul class="pager">
-              <li class="previous disabled"><a href="#">&larr; Older</a></li>
-              <li class="next"><a href="#">Newer &rarr;</a></li>
-            </ul>
+            {{ pagination.render(null, {}, {'style': 'pager', 'prev_label': '&larr; Older', 'next_label': 'Newer &rarr;'})|raw }}
           </div>
 <pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li class="previous disabled"&gt;
-    &lt;a href="#"&gt;&amp;larr; Older&lt;/a&gt;
-  &lt;/li&gt;
-  ...
-&lt;/ul&gt;
+{{ "{{ pagination.render(null, {}, {'style': 'pager', 'prev_label': '&amp;larr; Older', 'next_label': 'Newer &amp;rarr;'})|raw }}" }}
 </pre>
+
 
         </section>
 
