@@ -1392,52 +1392,60 @@ public function dropdownNavbar(FactoryInterface $factory, array $options)
             </thead>
             <tbody>
               <tr>
-                <td>
-                  <span class="label">Default</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label"&gt;Default&lt;/span&gt;</code>
-                </td>
+                <td>{{ 'Default'|label }}</td>
+                <td><code>{{ "{{ 'Default'|label }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  <span class="label label-success">Success</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-success"&gt;Success&lt;/span&gt;</code>
-                </td>
+                <td>{{ 'Success'|label('success') }}</td>
+                <td><code>{{ "{{ 'Success'|label('success') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  <span class="label label-warning">Warning</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-warning"&gt;Warning&lt;/span&gt;</code>
-                </td>
+                <td>{{ 'Warning'|label('warning') }}</td>
+                <td><code>{{ "{{ 'Warning'|label('warning') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  <span class="label label-important">Important</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-important"&gt;Important&lt;/span&gt;</code>
-                </td>
+                <td>{{ 'Important'|label('important') }}</td>
+                <td><code>{{ "{{ 'Important'|label('important') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  <span class="label label-info">Info</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-info"&gt;Info&lt;/span&gt;</code>
-                </td>
+                <td>{{ 'Info'|label('info') }}</td>
+                <td><code>{{ "{{ 'Info'|label('info') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  <span class="label label-inverse">Inverse</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-inverse"&gt;Inverse&lt;/span&gt;</code>
-                </td>
+                <td>{{ 'Inverse'|label('inverse') }}</td>
+                <td><code>{{ "{{ 'Inverse'|label('inverse') }}" }}</code></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Label aliases</h3>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Labels</th>
+                <th>Markup</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ 'Success'|label_success }}</td>
+                <td><code>{{ "{{ 'Success'|label_success }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>{{ 'Warning'|label_warning }}</td>
+                <td><code>{{ "{{ 'Warning'|label_warning }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>{{ 'Important'|label_important }}</td>
+                <td><code>{{ "{{ 'Important'|label_important }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>{{ 'Info'|label_info }}</td>
+                <td><code>{{ "{{ 'Info'|label_info }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>{{ 'Inverse'|label_inverse }}</td>
+                <td><code>{{ "{{ 'Inverse'|label_inverse }}" }}</code></td>
               </tr>
             </tbody>
           </table>
@@ -1453,70 +1461,72 @@ public function dropdownNavbar(FactoryInterface $factory, array $options)
             </thead>
             <tbody>
               <tr>
-                <td>
-                  Default
-                </td>
-                <td>
-                  <span class="badge">1</span>
-                </td>
-                <td>
-                  <code>&lt;span class="badge"&gt;1&lt;/span&gt;</code>
-                </td>
+                <td>Default</td>
+                <td>{{ 1|badge }}</td>
+                <td><code>{{ "{{ 1|badge }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  Success
-                </td>
-                <td>
-                  <span class="badge badge-success">2</span>
-                </td>
-                <td>
-                  <code>&lt;span class="badge badge-success"&gt;2&lt;/span&gt;</code>
-                </td>
+                <td>Success</td>
+                <td>{{ 2|badge('success') }}</td>
+                <td><code>{{ "{{ 2|badge('success') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  Warning
-                </td>
-                <td>
-                  <span class="badge badge-warning">4</span>
-                </td>
-                <td>
-                  <code>&lt;span class="badge badge-warning"&gt;4&lt;/span&gt;</code>
-                </td>
+                <td>Warning</td>
+                <td>{{ 4|badge('warning') }}</td>
+                <td><code>{{ "{{ 4|badge('warning') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  Important
-                </td>
-                <td>
-                  <span class="badge badge-important">6</span>
-                </td>
-                <td>
-                  <code>&lt;span class="badge badge-important"&gt;6&lt;/span&gt;</code>
-                </td>
+                <td>Important</td>
+                <td>{{ 6|badge('important') }}</td>
+                <td><code>{{ "{{ 6|badge('important') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  Info
-                </td>
-                <td>
-                  <span class="badge badge-info">8</span>
-                </td>
-                <td>
-                  <code>&lt;span class="badge badge-info"&gt;8&lt;/span&gt;</code>
-                </td>
+                <td>Info</td>
+                <td>{{ 8|badge('info') }}</td>
+                <td><code>{{ "{{ 8|badge('info') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  Inverse
-                </td>
-                <td>
-                  <span class="badge badge-inverse">10</span>
-                </td>
-                <td>
-                  <code>&lt;span class="badge badge-inverse"&gt;10&lt;/span&gt;</code>
-                </td>
+                <td>Inverse</td>
+                <td>{{ 10|badge('inverse') }}</td>
+                <td><code>{{ "{{ 10|badge('inverse') }}" }}</code></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Badge aliases</h3>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Example</th>
+                <th>Markup</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Success</td>
+                <td>{{ 2|badge_success }}</td>
+                <td><code>{{ "{{ 2|badge_success }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>Warning</td>
+                <td>{{ 4|badge_warning }}</td>
+                <td><code>{{ "{{ 4|badge_warning }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>Important</td>
+                <td>{{ 6|badge_important }}</td>
+                <td><code>{{ "{{ 6|badge_important }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>Info</td>
+                <td>{{ 8|badge_info }}</td>
+                <td><code>{{ "{{ 8|badge_info }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>Inverse</td>
+                <td>{{ 10|badge_inverse }}</td>
+                <td><code>{{ "{{ 10|badge_inverse }}" }}</code></td>
               </tr>
             </tbody>
           </table>
