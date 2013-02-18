@@ -1300,29 +1300,10 @@ public function dropdownNavbar(FactoryInterface $factory, array $options)
           <h2>Standard pagination</h2>
           <p>Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
           <div class="bs-docs-example">
-            <div class="pagination">
-              <ul>
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-              </ul>
-            </div>
+            {{ pagination.render()|raw }}
           </div>
 <pre class="prettyprint linenums">
-&lt;div class="pagination"&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
+{{ '{{ pagination.render()|raw }}' }}
 </pre>
 
 
@@ -1331,78 +1312,29 @@ public function dropdownNavbar(FactoryInterface $factory, array $options)
 
           <h2>Options</h2>
 
-          <h3>Disabled and active states</h3>
-          <p>Links are customizable for different circumstances. Use <code>.disabled</code> for unclickable links and <code>.active</code> to indicate the current page.</p>
-          <div class="bs-docs-example">
-            <div class="pagination pagination-centered">
-              <ul>
-                <li class="disabled"><a href="#">&laquo;</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-             </ul>
-            </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="pagination"&gt;
-  &lt;ul&gt;
-    &lt;li class="disabled"&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
-    ...
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre>
-          <p>You can optionally swap out active or disabled anchors for spans to remove click functionality while retaining intended styles.</p>
-<pre class="prettyprint linenums">
-&lt;div class="pagination"&gt;
-  &lt;ul&gt;
-    &lt;li class="disabled"&gt;&lt;span&gt;Prev&lt;/span&gt;&lt;/li&gt;
-    &lt;li class="active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
-    ...
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre>
 
           <h3>Alignment</h3>
-          <p>Add one of two optional classes to change the alignment of pagination links: <code>.pagination-centered</code> and <code>.pagination-right</code>.</p>
+          <p>You can change the alignment of the pagination widget by adding an <code>alignment</code> option:</p>
           <div class="bs-docs-example">
-            <div class="pagination pagination-centered">
-              <ul>
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-             </ul>
-            </div>
+            {{ pagination.render(null, {}, {'alignment': 'center'})|raw }}
           </div>
 <pre class="prettyprint linenums">
-&lt;div class="pagination pagination-centered"&gt;
-  ...
-&lt;/div&gt;
+{{ "{{ pagination.render(null, {}, {'alignment': 'center'})|raw }}" }}
 </pre>
           <div class="bs-docs-example">
-            <div class="pagination pagination-right">
-              <ul>
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-              </ul>
-            </div>
+            {{ pagination.render(null, {}, {'alignment': 'right'})|raw }}
           </div>
 <pre class="prettyprint linenums">
-&lt;div class="pagination pagination-right"&gt;
-  ...
-&lt;/div&gt;
+{{ "{{ pagination.render(null, {}, {'alignment': 'right'})|raw }}" }}
+</pre>
+
+          <h3>Labels</h3>
+          <p>Change the text of the labels:</p>
+          <div class="bs-docs-example">
+            {{ pagination.render(null, {}, {'alignment': 'center', 'first_label': '&lt;&lt;', 'last_label': '&gt;&gt;', 'prev_label': '&lt;', 'next_label': '&gt;'})|raw }}
+          </div>
+<pre class="prettyprint linenums">
+{{ "{{ pagination.render(null, {}, {'alignment': 'center', 'first_label': '&amp;lt;&amp;lt;', 'last_label': '&amp;gt;&amp;gt;', 'prev_label': '&amp;lt;', 'next_label': '&amp;gt;'})|raw }}" }}
 </pre>
 
 
@@ -1415,53 +1347,30 @@ public function dropdownNavbar(FactoryInterface $factory, array $options)
           <h3>Default example</h3>
           <p>By default, the pager centers links.</p>
           <div class="bs-docs-example">
-            <ul class="pager">
-              <li><a href="#">Previous</a></li>
-              <li><a href="#">Next</a></li>
-            </ul>
+            {{ pagination.render(null, {}, {'style': 'pager'})|raw }}
           </div>
 <pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Previous&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+{{ "{{ pagination.render(null, {}, {'style': 'pager'})|raw }}" }}
 </pre>
 
           <h3>Aligned links</h3>
           <p>Alternatively, you can align each link to the sides:</p>
           <div class="bs-docs-example">
-            <ul class="pager">
-              <li class="previous"><a href="#">&larr; Older</a></li>
-              <li class="next"><a href="#">Newer &rarr;</a></li>
-            </ul>
+            {{ pagination.render(null, {}, {'style': 'pager', 'aligned': true})|raw }}
           </div>
 <pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li class="previous"&gt;
-    &lt;a href="#"&gt;&amp;larr; Older&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li class="next"&gt;
-    &lt;a href="#"&gt;Newer &amp;rarr;&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+{{ "{{ pagination.render(null, {}, {'style': 'pager', 'aligned': true})|raw }}" }}
 </pre>
 
-          <h3>Optional disabled state</h3>
-          <p>Pager links also use the general <code>.disabled</code> utility class from the pagination.</p>
+          <h3>Labels</h3>
+          <p>You can change the text of the buttons:</p>
           <div class="bs-docs-example">
-            <ul class="pager">
-              <li class="previous disabled"><a href="#">&larr; Older</a></li>
-              <li class="next"><a href="#">Newer &rarr;</a></li>
-            </ul>
+            {{ pagination.render(null, {}, {'style': 'pager', 'prev_label': '&larr; Older', 'next_label': 'Newer &rarr;'})|raw }}
           </div>
 <pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li class="previous disabled"&gt;
-    &lt;a href="#"&gt;&amp;larr; Older&lt;/a&gt;
-  &lt;/li&gt;
-  ...
-&lt;/ul&gt;
+{{ "{{ pagination.render(null, {}, {'style': 'pager', 'prev_label': '&amp;larr; Older', 'next_label': 'Newer &amp;rarr;'})|raw }}" }}
 </pre>
+
 
         </section>
 
@@ -1483,52 +1392,60 @@ public function dropdownNavbar(FactoryInterface $factory, array $options)
             </thead>
             <tbody>
               <tr>
-                <td>
-                  <span class="label">Default</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label"&gt;Default&lt;/span&gt;</code>
-                </td>
+                <td>{{ 'Default'|label }}</td>
+                <td><code>{{ "{{ 'Default'|label }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  <span class="label label-success">Success</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-success"&gt;Success&lt;/span&gt;</code>
-                </td>
+                <td>{{ 'Success'|label('success') }}</td>
+                <td><code>{{ "{{ 'Success'|label('success') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  <span class="label label-warning">Warning</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-warning"&gt;Warning&lt;/span&gt;</code>
-                </td>
+                <td>{{ 'Warning'|label('warning') }}</td>
+                <td><code>{{ "{{ 'Warning'|label('warning') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  <span class="label label-important">Important</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-important"&gt;Important&lt;/span&gt;</code>
-                </td>
+                <td>{{ 'Important'|label('important') }}</td>
+                <td><code>{{ "{{ 'Important'|label('important') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  <span class="label label-info">Info</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-info"&gt;Info&lt;/span&gt;</code>
-                </td>
+                <td>{{ 'Info'|label('info') }}</td>
+                <td><code>{{ "{{ 'Info'|label('info') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  <span class="label label-inverse">Inverse</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-inverse"&gt;Inverse&lt;/span&gt;</code>
-                </td>
+                <td>{{ 'Inverse'|label('inverse') }}</td>
+                <td><code>{{ "{{ 'Inverse'|label('inverse') }}" }}</code></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Label aliases</h3>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Labels</th>
+                <th>Markup</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ 'Success'|label_success }}</td>
+                <td><code>{{ "{{ 'Success'|label_success }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>{{ 'Warning'|label_warning }}</td>
+                <td><code>{{ "{{ 'Warning'|label_warning }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>{{ 'Important'|label_important }}</td>
+                <td><code>{{ "{{ 'Important'|label_important }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>{{ 'Info'|label_info }}</td>
+                <td><code>{{ "{{ 'Info'|label_info }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>{{ 'Inverse'|label_inverse }}</td>
+                <td><code>{{ "{{ 'Inverse'|label_inverse }}" }}</code></td>
               </tr>
             </tbody>
           </table>
@@ -1544,70 +1461,72 @@ public function dropdownNavbar(FactoryInterface $factory, array $options)
             </thead>
             <tbody>
               <tr>
-                <td>
-                  Default
-                </td>
-                <td>
-                  <span class="badge">1</span>
-                </td>
-                <td>
-                  <code>&lt;span class="badge"&gt;1&lt;/span&gt;</code>
-                </td>
+                <td>Default</td>
+                <td>{{ 1|badge }}</td>
+                <td><code>{{ "{{ 1|badge }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  Success
-                </td>
-                <td>
-                  <span class="badge badge-success">2</span>
-                </td>
-                <td>
-                  <code>&lt;span class="badge badge-success"&gt;2&lt;/span&gt;</code>
-                </td>
+                <td>Success</td>
+                <td>{{ 2|badge('success') }}</td>
+                <td><code>{{ "{{ 2|badge('success') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  Warning
-                </td>
-                <td>
-                  <span class="badge badge-warning">4</span>
-                </td>
-                <td>
-                  <code>&lt;span class="badge badge-warning"&gt;4&lt;/span&gt;</code>
-                </td>
+                <td>Warning</td>
+                <td>{{ 4|badge('warning') }}</td>
+                <td><code>{{ "{{ 4|badge('warning') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  Important
-                </td>
-                <td>
-                  <span class="badge badge-important">6</span>
-                </td>
-                <td>
-                  <code>&lt;span class="badge badge-important"&gt;6&lt;/span&gt;</code>
-                </td>
+                <td>Important</td>
+                <td>{{ 6|badge('important') }}</td>
+                <td><code>{{ "{{ 6|badge('important') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  Info
-                </td>
-                <td>
-                  <span class="badge badge-info">8</span>
-                </td>
-                <td>
-                  <code>&lt;span class="badge badge-info"&gt;8&lt;/span&gt;</code>
-                </td>
+                <td>Info</td>
+                <td>{{ 8|badge('info') }}</td>
+                <td><code>{{ "{{ 8|badge('info') }}" }}</code></td>
               </tr>
               <tr>
-                <td>
-                  Inverse
-                </td>
-                <td>
-                  <span class="badge badge-inverse">10</span>
-                </td>
-                <td>
-                  <code>&lt;span class="badge badge-inverse"&gt;10&lt;/span&gt;</code>
-                </td>
+                <td>Inverse</td>
+                <td>{{ 10|badge('inverse') }}</td>
+                <td><code>{{ "{{ 10|badge('inverse') }}" }}</code></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Badge aliases</h3>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Example</th>
+                <th>Markup</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Success</td>
+                <td>{{ 2|badge_success }}</td>
+                <td><code>{{ "{{ 2|badge_success }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>Warning</td>
+                <td>{{ 4|badge_warning }}</td>
+                <td><code>{{ "{{ 4|badge_warning }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>Important</td>
+                <td>{{ 6|badge_important }}</td>
+                <td><code>{{ "{{ 6|badge_important }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>Info</td>
+                <td>{{ 8|badge_info }}</td>
+                <td><code>{{ "{{ 8|badge_info }}" }}</code></td>
+              </tr>
+              <tr>
+                <td>Inverse</td>
+                <td>{{ 10|badge_inverse }}</td>
+                <td><code>{{ "{{ 10|badge_inverse }}" }}</code></td>
               </tr>
             </tbody>
           </table>
