@@ -29,7 +29,7 @@
         "knplabs/knp-menu-bundle":  "BraincraftedBootstrapBundle styles the menus provided by KnpMenuBundle."
     },
     "autoload": {
-        "psr-0": { "Braincrafted\\BootstrapBundle": "" }
+        "psr-0": { "Braincrafted\\BootstrapDemoBundle": "" }
     },
-    "target-dir": "Braincrafted/BootstrapBundle"
+    "target-dir": "Braincrafted/BootstrapDemoBundle"
 }
