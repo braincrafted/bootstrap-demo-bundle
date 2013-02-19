@@ -1,0 +1,35 @@
+{
+    "name":         "braincrafted/bootstrap-demo-bundle",
+    "version":      "1.1.0",
+    "description":  "BraincraftedBootstrapDemoBundle",
+    "keywords":     ["bootstrap"],
+    "type":         "symfony-bundle",
+    "license":      "MIT",
+    "authors":     [
+        {
+            "name":     "Florian Eckerstorfer",
+            "email":    "florian@theroadtojoy.at",
+            "homepage": "http://florianeckerstorfer.com"
+        }
+    ],
+    "require":      {
+        "php": ">=5.3.3",
+        "twig/extensions": "dev-master",
+        "braincrafted/bootstrap-bundle": "dev-master"
+    },
+    "require-dev": {
+        "knplabs/knp-menu": "dev-master",
+        "knplabs/knp-menu-bundle": "dev-master",
+        "knplabs/knp-markdown-bundle": "dev-master",
+        "knplabs/knp-paginator-bundle": "dev-master"
+    },
+    "suggest":      {
+        "knplabs/knp-paginator-bundle": "BraincraftedBootstrapBundle styles the pagination provided by KnpPaginatorBundle.",
+        "knplabs/knp-menu":         "Required to use KnpMenuBundle.",
+        "knplabs/knp-menu-bundle":  "BraincraftedBootstrapBundle styles the menus provided by KnpMenuBundle."
+    },
+    "autoload": {
+        "psr-0": { "Braincrafted\\BootstrapBundle": "" }
+    },
+    "target-dir": "Braincrafted/BootstrapBundle"
+}
