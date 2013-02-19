@@ -1300,10 +1300,10 @@ public function dropdownNavbar(FactoryInterface $factory, array $options)
           <h2>Standard pagination</h2>
           <p>Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
           <div class="bs-docs-example">
-            {{ pagination.render()|raw }}
+            {{ knp_pagination_render(pagination) }}
           </div>
 <pre class="prettyprint linenums">
-{{ '{{ pagination.render()|raw }}' }}
+{{ '{{ knp_pagination_render(pagination) }}' }}
 </pre>
 
 
@@ -1316,25 +1316,25 @@ public function dropdownNavbar(FactoryInterface $factory, array $options)
           <h3>Alignment</h3>
           <p>You can change the alignment of the pagination widget by adding an <code>alignment</code> option:</p>
           <div class="bs-docs-example">
-            {{ pagination.render(null, {}, {'alignment': 'center'})|raw }}
+            {{ knp_pagination_render(pagination, null, {}, {'alignment': 'center'}) }}
           </div>
 <pre class="prettyprint linenums">
-{{ "{{ pagination.render(null, {}, {'alignment': 'center'})|raw }}" }}
+{{ "{{ knp_pagination_render(pagination, null, {}, {'alignment': 'center'}) }}" }}
 </pre>
           <div class="bs-docs-example">
-            {{ pagination.render(null, {}, {'alignment': 'right'})|raw }}
+            {{ knp_pagination_render(pagination, null, {}, {'alignment': 'right'}) }}
           </div>
 <pre class="prettyprint linenums">
-{{ "{{ pagination.render(null, {}, {'alignment': 'right'})|raw }}" }}
+{{ "{{ knp_pagination_render(pagination, null, {}, {'alignment': 'right'}) }}" }}
 </pre>
 
           <h3>Labels</h3>
           <p>Change the text of the labels:</p>
           <div class="bs-docs-example">
-            {{ pagination.render(null, {}, {'alignment': 'center', 'first_label': '&lt;&lt;', 'last_label': '&gt;&gt;', 'prev_label': '&lt;', 'next_label': '&gt;'})|raw }}
+            {{ knp_pagination_render(pagination, null, {}, {'alignment': 'center', 'first_label': '&lt;&lt;', 'last_label': '&gt;&gt;', 'prev_label': '&lt;', 'next_label': '&gt;'}) }}
           </div>
 <pre class="prettyprint linenums">
-{{ "{{ pagination.render(null, {}, {'alignment': 'center', 'first_label': '&amp;lt;&amp;lt;', 'last_label': '&amp;gt;&amp;gt;', 'prev_label': '&amp;lt;', 'next_label': '&amp;gt;'})|raw }}" }}
+{{ "{{ knp_pagination_render(pagination, null, {}, {'alignment': 'center', 'first_label': '&lt;&lt;', 'last_label': '&gt;&gt;', 'prev_label': '&lt;', 'next_label': '&gt;'}) }}" }}
 </pre>
 
 
@@ -1347,28 +1347,28 @@ public function dropdownNavbar(FactoryInterface $factory, array $options)
           <h3>Default example</h3>
           <p>By default, the pager centers links.</p>
           <div class="bs-docs-example">
-            {{ pagination.render(null, {}, {'style': 'pager'})|raw }}
+            {{ knp_pagination_render(pagination, null, {}, {'style': 'pager'}) }}
           </div>
 <pre class="prettyprint linenums">
-{{ "{{ pagination.render(null, {}, {'style': 'pager'})|raw }}" }}
+{{ "{{ knp_pagination_render(pagination, null, {}, {'style': 'pager'}) }}" }}
 </pre>
 
           <h3>Aligned links</h3>
           <p>Alternatively, you can align each link to the sides:</p>
           <div class="bs-docs-example">
-            {{ pagination.render(null, {}, {'style': 'pager', 'aligned': true})|raw }}
+            {{ knp_pagination_render(pagination, null, {}, {'style': 'pager', 'aligned': true}) }}
           </div>
 <pre class="prettyprint linenums">
-{{ "{{ pagination.render(null, {}, {'style': 'pager', 'aligned': true})|raw }}" }}
+{{ "{{ knp_pagination_render(pagination, null, {}, {'style': 'pager', 'aligned': true}) }}" }}
 </pre>
 
           <h3>Labels</h3>
           <p>You can change the text of the buttons:</p>
           <div class="bs-docs-example">
-            {{ pagination.render(null, {}, {'style': 'pager', 'prev_label': '&larr; Older', 'next_label': 'Newer &rarr;'})|raw }}
+            {{ knp_pagination_render(pagination, null, {}, {'style': 'pager', 'prev_label': '&larr; Older', 'next_label': 'Newer &rarr;'}) }}
           </div>
 <pre class="prettyprint linenums">
-{{ "{{ pagination.render(null, {}, {'style': 'pager', 'prev_label': '&amp;larr; Older', 'next_label': 'Newer &amp;rarr;'})|raw }}" }}
+{{ "{{ knp_pagination_render(pagination, null, {}, {'style': 'pager', 'prev_label': '&larr; Older', 'next_label': 'Newer &rarr;'}) }}" }}
 </pre>
 
 
