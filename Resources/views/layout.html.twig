@@ -9,7 +9,12 @@
 <meta name="description" content="Twitter Bootstrap for Symfony2 brings the famous Twitter Bootstrap to Symfony2. In a snap.">
 <meta name="author" content="Florian Eckerstorfer">
 
-{% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}
+<!-- Use precompiled CSS files -->
+<!-- {{ "{% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}" }} -->
+
+<!-- Use Assetic -->
+<link rel="stylesheet" href="{{ asset('bundles/braincraftedbootstrap/css/bootstrap.css') }}">
+
 <link rel="stylesheet" href="/bundles/braincraftedbootstrapdemo/css/docs.css">
 <link rel="stylesheet" href="/bundles/braincraftedbootstrapdemo/css/bc-docs.css">
 <link rel="stylesheet" href="/bundles/braincraftedbootstrapdemo/css/google-code-prettify.css">
@@ -57,9 +62,16 @@
       </div>
     </footer>
 
-{% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}
-<script src="{{ asset('/bundles/braincraftedbootstrapdemo/js/application.js') }}"></script>
-<script src="/bundles/braincraftedbootstrapdemo/js/google-code-prettify.js"></script>
+<!-- Use precompiled JavaScript files (includes jQuery) -->
+<!-- {{ "{% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}" }} -->
+
+<!-- Use Assetic -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{ asset('bundles/braincraftedbootstrap/js/jquery-1.9.1.min.js') }}"><\/script>')</script>
+<script src="{{ asset('bundles/braincraftedbootstrap/js/bootstrap.js') }}"></script>
+
+<script src="{{ asset('bundles/braincraftedbootstrapdemo/js/application.js') }}"></script>
+<script src="{{ asset('bundles/braincraftedbootstrapdemo/js/google-code-prettify.js') }}"></script>
 <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 
 </body>
