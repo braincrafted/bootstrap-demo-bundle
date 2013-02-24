@@ -72,6 +72,31 @@ class Builder extends ContainerAware
     }
 
     /**
+     * Builds the navListIcons menu.
+     *
+     * @param \Knp\Menu\FactoryInterface $factory The menu factory
+     * @param array                      $options The options array
+     *
+     * @return \Knp\Menu\ItemInterface The root item
+     */
+    public function navListIcons(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+
+        $item = $menu->addChild('List Header');
+        $item->addChild('.icon-home Home', array('uri' => '#'));
+        $item->addChild('.icon-book Library', array('uri' => '#'));
+        $item->addChild('.icon-briefcase Applications', array('uri' => '#'));
+        $item = $menu->addChild('Another List Header');
+        $item->addChild('.icon-user Profile', array('uri' => '#'));
+        $item->addChild('.icon-cog Settings', array('uri' => '#'));
+        $menu->addChild('d1', array('attributes' => array('divider' => true)));
+        $menu->addChild('.icon-question-sign Help', array('uri' => '#'));
+
+        return $menu;
+    }
+
+    /**
      * Builds the basic tabs menu.
      *
      * @param \Knp\Menu\FactoryInterface $factory The menu factory
