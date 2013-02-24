@@ -120,6 +120,72 @@ knp_menu:
 </pre>
             </div>
           </div>
+
+          <div class="row-fluid">
+            <div class="span12">
+              <h2>KnpPaginator theme</h2>
+              <p>If you want to use KnpMenu to display menus in the Twitter Bootstrap style you have to tell KnpMenu to use the theme provided by BootstrapBundle.</p>
+<pre class="prettyprint linenums">
+# app/config.yml
+knp_paginator:
+    template:
+        pagination: BraincraftedBootstrapBundle:Pagination:pagination.html.twig
+</pre>
+            </div>
+          </div>
+
+          <div class="row-fluid">
+            <div class="span12">
+              <h2>Use Assetic for Asset Management</h2>
+              <p>If you want to manage your assets with Assetic you need add the Twitter Bootstrap CSS or LESS and JavaScript files to your configuration. You can either include the precompiled CSS and JavaScript files in your configuration or you can compile and concatinate the module files using, for example, the following configuration. Of course you can modify the configuration depending on your needs:</p>
+<pre class="prettyprint linenums">
+# app/config.yml
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    bundles:        [ ]
+    filters:
+        less:
+            node:       /usr/local/bin/node
+            node_paths: [/usr/local/lib/node_modules]
+            apply_to:   "\.less$"
+        cssrewrite: ~
+    assets:
+        bootstrap_css:
+            inputs:
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/less/bootstrap.less
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/less/responsive.less
+            filters:
+                - less
+                - cssrewrite
+            output: bundles/braincraftedbootstrap/css/bootstrap.compiled.css
+        bootstrap_js:
+            inputs:
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/js/bootstrap-transition.js
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/js/bootstrap-alert.js
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/js/bootstrap-button.js
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/js/bootstrap-carousel.js
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/js/bootstrap-collapse.js
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/js/bootstrap-dropdown.js
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/js/bootstrap-modal.js
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/js/bootstrap-tooltip.js
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/js/bootstrap-popover.js
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/js/bootstrap-scrollspy.js
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/js/bootstrap-tab.js
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/js/bootstrap-typeahead.js
+                - %kernel.root_dir%/../web/bundles/braincraftedbootstrap/js/bootstrap-affix.js
+            output: bundles/braincraftedbootstrap/js/bootstrap.compiled.js
+</pre>
+            <p>You should also configure you assets in the `config.yml` instead of your template. Learn more about <a href="http://sonata-project.org/blog/2012/5/15/assetic-package-configuration">configuring Assetic</a>.</p>
+            <p>You now need to install the assets and dump the assets (the order is important):</p>
+<pre class="prettyprint linenums">
+$ php app/console assets:install --symlink
+$ php app/console assetic:dump
+</pre>
+            <p>If you change the `output` directory you probably have to manually copy the icons to your `web` directory.</p>
+            <p>When you don't want to use Assetic you can include the assets directly. A template is provided in the section <a href="#html-template">HTML template</a>.
+            </div>
+          </div>
         </section>
 
 
@@ -251,6 +317,24 @@ knp_menu:
   &lt;body&gt;
     &lt;h1&gt;Hello, world!&lt;/h1&gt;
     {{ "{% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}" }}
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+        <p>You can also include the assets directly, for example, when you don't want to use the responsive Bootstrap stylesheet.</p>
+        <p>You can use the following template if you manager your assets with Assetic. Please note that you also have to change the <a href="#configuration">configuration</a> to make this work:
+<pre class="prettyprint linenums">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+    &lt;!-- Bootstrap --&gt;
+    &lt;link rel="stylesheet" href="{{ "{{ asset('bundles/braincraftedbootstrap/css/bootstrap.compiled.css') }}" }}"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, world!&lt;/h1&gt;
+    &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script>window.jQuery || document.write('&lt;script src="{{ asset('bundles/braincraftedbootstrap/js/jquery-1.9.1.min.js') }}"&gt;&lt;\/script&gt;')&lt;/script&gt;
+    &lt;script src="{{ "{{ asset('bundles/braincraftedbootstrap/js/bootstrap.compiled.js') }}" }}"&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </pre>
