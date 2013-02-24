@@ -764,6 +764,33 @@ public function navList(FactoryInterface $factory, array $options)
 ...
 </pre>
 
+          <h3>Nav list with icons</h3>
+          <p>You can use the  <code>.icon-*</code> syntax to add an icon to a menu:</p>
+          <div class="bs-docs-example">
+            <div class="well" style="max-width: 340px; padding: 8px 0;">
+              {{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:navListIcons', {'nav_type': 'list'}) }}
+            </div> <!-- /well -->
+          </div>
+<pre class="prettyprint linenums">
+{{ "{{ knp_menu_render('BraincraftedBootstrapDemoBundle:Builder:navListIcons', {'nav_type': 'list'}) }}" }}
+</pre>
+<pre class="prettyprint linenums">
+// src/Braincrafted/BootstrapDemoBundle/Menu/Builder.php
+...
+public function navList(FactoryInterface $factory, array $options)
+{
+    $menu = $factory->createItem('root');
+
+    $item = $menu->addChild('List Header');
+    $item->addChild('.icon-home Home', array('uri' => '#'));
+    $item->addChild('.icon-book Library', array('uri' => '#'));
+    ...
+
+    return $menu;
+}
+...
+</pre>
+
           <h3>Horizontal dividers</h3>
           <p>Add a horizontal divider by creating a list item with the attribute <code>divider</code>, like so:</p>
 <pre class="prettyprint linenums">
