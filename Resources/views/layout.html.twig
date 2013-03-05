@@ -11,9 +11,10 @@
 
 <!-- Use precompiled CSS files -->
 <!-- {{ "{% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}" }} -->
+<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 
 <!-- Use Assetic -->
-<link rel="stylesheet" href="{{ asset('bundles/braincraftedbootstrap/css/bootstrap.compiled.css') }}">
+<!-- {{ "<link rel=\"stylesheet\" href=\"{{ asset('bundles/braincraftedbootstrap/css/bootstrap.compiled.css') }}\">" }} -->
 
 <link rel="stylesheet" href="/bundles/braincraftedbootstrapdemo/css/docs.css">
 <link rel="stylesheet" href="/bundles/braincraftedbootstrapdemo/css/bc-docs.css">
@@ -67,8 +68,9 @@
 
 <!-- Use Assetic -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="{{ asset('bundles/braincraftedbootstrap/js/jquery-1.9.1.min.js') }}"><\/script>')</script>
-<script src="{{ asset('bundles/braincraftedbootstrap/js/bootstrap.compiled.js') }}"></script>
+<script>window.jQuery || document.write('<script src="{{ asset('js/jquery.js') }}"><\/script>')</script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+<!-- {{ "<script src=\"{{ asset('bundles/braincraftedbootstrap/js/bootstrap.compiled.js') }}\"></script>" }}-->
 
 <script src="{{ asset('bundles/braincraftedbootstrapdemo/js/application.js') }}"></script>
 <script src="{{ asset('bundles/braincraftedbootstrapdemo/js/google-code-prettify.js') }}"></script>
