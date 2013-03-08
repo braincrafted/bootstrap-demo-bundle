@@ -38,6 +38,12 @@ class CityType extends AbstractType
             'label' => 'Population',
             'attr'  => array('class' => 'span2')
         ));
+        $builder->add('newsletter', 'choice', array(
+            'label'   => 'Subscribe?',
+            'choices' => array(1 => 'Yes', 0 => 'No'),
+            'multiple' => false,
+            'expanded' => true
+        ));
     }
 
     /**
