@@ -26,7 +26,8 @@
     "suggest":      {
         "knplabs/knp-paginator-bundle": "BraincraftedBootstrapBundle styles the pagination provided by KnpPaginatorBundle.",
         "knplabs/knp-menu":         "Required to use KnpMenuBundle.",
-        "knplabs/knp-menu-bundle":  "BraincraftedBootstrapBundle styles the menus provided by KnpMenuBundle."
+        "knplabs/knp-menu-bundle":  "BraincraftedBootstrapBundle styles the menus provided by KnpMenuBundle.",
+        "twitter/bootstrap":        "Get Stylesheets, JavaScripts and icons directly from Bootstrap."
     },
     "autoload": {
         "psr-0": { "Braincrafted\\BootstrapDemoBundle": "" }
