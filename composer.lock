@@ -1,5 +1,5 @@
 {
-    "hash": "d2b38dc19f5f1d42deb8db0055b01fa5",
+    "hash": "2e512065649b5344f06e074cfa592d86",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -1213,7 +1213,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "twig/extensions": 20,
         "braincrafted/bootstrap-bundle": 20,
         "knplabs/knp-menu": 20,
         "knplabs/knp-menu-bundle": 20,
