@@ -47,6 +47,12 @@ class City
     protected $mayorEmail;
 
     /**
+     * @var boolean
+     * @Assert\Type("boolean")
+     */
+    protected $newsletter;
+
+    /**
      * Sets the name
      *
      * @param string $name The name
@@ -113,5 +119,16 @@ class City
     public function getMayorEmail()
     {
         return $this->mayorEmail;
+    }
+
+    public function setNewsletter($newsletter)
+    {
+        $this->newsletter = $newsletter;
+        return $this;
+    }
+
+    public function getNewsletter()
+    {
+        return $this->newsletter;
     }
 }
