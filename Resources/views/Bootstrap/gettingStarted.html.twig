@@ -187,11 +187,18 @@ assetic:
             output: js/jquery.js
 ...
 </pre>
+              <p>You also need to place the icons in your `web` folder. You can either copy the icons (they are located in `vendor/twitter/bootstrap/img`) or you symlink them into your `web` folder:
+<pre class="prettyprint linenums">
+$ mkdir -p web/img
+$ cd web/img
+$ ln -s ../../vendor/twitter/bootstrap/img/glyphicons-halflings.png
+$ ln -s ../../vendor/twitter/bootstrap/img/glyphicons-halflings-white.png
+</pre>
               <p>If you continue reading you will find a HTML template you can use with this configuration.
             </div>
           </div>
 
-<div class="row-fluid">
+          <div class="row-fluid">
             <div class="span12">
               <h2>Without Assetic</h2>
               <p>When you don't want to use Assetic in your project (why?) you can symlink the asset files from the <code>vendor/twitter/bootstrap</code> directory into your web directory:</p>
