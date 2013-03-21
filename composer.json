@@ -14,7 +14,7 @@
     ],
     "require":      {
         "php":                              ">=5.3.3",
-        "braincrafted/bootstrap-bundle":    "dev-master"
+        "braincrafted/bootstrap-bundle":    "dev-develop"
     },
     "require-dev": {
         "knplabs/knp-menu":             "dev-master",

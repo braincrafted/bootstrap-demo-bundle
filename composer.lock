@@ -1,19 +1,19 @@
 {
-    "hash": "77c7fcad7ab258081dc6e466ac70f1c2",
+    "hash": "857ac5838ccffb2739c8b3faddb92ff1",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
-            "version": "dev-master",
+            "version": "dev-develop",
             "target-dir": "Braincrafted/BootstrapBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/braincrafted/bootstrap-bundle.git",
-                "reference": "v1.3.1"
+                "reference": "cc76a41dd414e58e00ce0842dacd6c815abbc170"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/braincrafted/bootstrap-bundle/zipball/v1.3.1",
-                "reference": "v1.3.1",
+                "url": "https://api.github.com/repos/braincrafted/bootstrap-bundle/zipball/cc76a41dd414e58e00ce0842dacd6c815abbc170",
+                "reference": "cc76a41dd414e58e00ce0842dacd6c815abbc170",
                 "shasum": ""
             },
             "require": {
@@ -53,7 +53,7 @@
             "keywords": [
                 "bootstrap"
             ],
-            "time": "2013-03-08 21:14:47"
+            "time": "2013-03-08 21:14:53"
         }
     ],
     "packages-dev": [
@@ -371,12 +371,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "bfaa9f1a74ee590c5e6460a3139b268fce1f1885"
+                "reference": "8f84c396927809e885f7a17ef3737358c001d78f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/bfaa9f1a74ee590c5e6460a3139b268fce1f1885",
-                "reference": "bfaa9f1a74ee590c5e6460a3139b268fce1f1885",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/8f84c396927809e885f7a17ef3737358c001d78f",
+                "reference": "8f84c396927809e885f7a17ef3737358c001d78f",
                 "shasum": ""
             },
             "require": {
@@ -416,7 +416,7 @@
             "keywords": [
                 "menu"
             ],
-            "time": "2012-12-29 08:47:58"
+            "time": "2013-03-18 17:08:00"
         },
         {
             "name": "knplabs/knp-paginator-bundle",
@@ -425,12 +425,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
-                "reference": "v2.3.2"
+                "reference": "ae880a6a8adc2a41b14dcebf0a4e9dc142a3a772"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/v2.3.2",
-                "reference": "v2.3.2",
+                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/ae880a6a8adc2a41b14dcebf0a4e9dc142a3a772",
+                "reference": "ae880a6a8adc2a41b14dcebf0a4e9dc142a3a772",
                 "shasum": ""
             },
             "require": {
@@ -475,7 +475,7 @@
                 "pagination",
                 "paginator"
             ],
-            "time": "2013-02-18 17:29:20"
+            "time": "2013-03-14 07:27:40"
         },
         {
             "name": "psr/log",
