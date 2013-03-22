@@ -1,6 +1,6 @@
 {
     "name":         "braincrafted/bootstrap-demo-bundle",
-    "version":      "1.3.2",
+    "version":      "1.3.3",
     "description":  "BraincraftedBootstrapDemoBundle",
     "keywords":     ["bootstrap"],
     "type":         "symfony-bundle",
